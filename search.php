@@ -90,24 +90,28 @@ if($mysql->connect_errno) {
                     <img src="images/host/profile1.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/denmark.png">
+                <h3 class="hostcardinfo">Thomas in Denmark</h3>
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
                     <img src="images/host/profile2.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/london.png">
+                <h3 class="hostcardinfo">Emily in London</h3>
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
                     <img src="images/host/profile3.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/la.png">
+                <h3 class="hostcardinfo">Ben in Los Angeles</h3>
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
                     <img src="images/host/profile4.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/paris.png">
+                <h3 class="hostcardinfo">Sarah in Paris</h3>
             </div>
         </div>
     </div>
@@ -120,24 +124,28 @@ if($mysql->connect_errno) {
                     <img src="images/host/profile1.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/denmark.png">
+                <h3 class="hostcardinfo">Thomas in Denmark</h3>
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
                     <img src="images/host/profile2.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/london.png">
+                <h3 class="hostcardinfo">Emily in London</h3>
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
                     <img src="images/host/profile3.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/la.png">
+                <h3 class="hostcardinfo">Ben in Los Angeles</h3>
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
                     <img src="images/host/profile4.png" alt="Host profile" class="profile-image">
                 </div>
                 <img src="images/host/paris.png">
+                <h3 class="hostcardinfo">Sarah in Paris</h3>
             </div>
         </div>
     </div>
@@ -355,6 +363,15 @@ if($mysql->connect_errno) {
         object-fit: cover;
     }
 
+    h3 {
+        position: absolute;
+        color: black;
+        top: 250px;
+        left: 65px;
+        background-color:white;
+        padding: 5px;
+        border-radius:10px;
+    }
     .review-grid {
         display:flex;
         margin: 10px 93.26px;
