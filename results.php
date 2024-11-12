@@ -59,39 +59,116 @@ if($mysql->connect_errno) {
 <main>
     <div class = resultnumber>
         <p>Showcasing 100 out of 13,570 results </p>
-    </div>
-    <div class="results">
-        <div class="results-grid">
-            <div class="review-card">
-                <p class="reviewer-name">Sarah Wood</p>
-                <p class="review-destination">Hollywood, Los Angeles, CA, 90046</p>
-                <p class="review-text">“Emily was the perfect host for a solo traveler.
-                    Emily was so nice and welcoming to her house.
-                    She had amazing itineraries that I personally enjoyed.”</p>
-            </div>
-            <div class="review-card">
-                <p class="reviewer-name">Sarah</p>
-                <p class="review-destination">to Emily in Denmark</p>
-                <div class="stars">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <div class="container">
+            <!-- First Card -->
+            <div class="listing-card">
+                <div class="listing-header">
+                    <div class="profile-section">
+                        <div class="profile-image-container">
+                            <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="host-info">
+                            <h2 class="host-name">Host Name</h2>
+                            <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
+                            <div class="host-rating">
+                                <span class="star-icon">★</span>
+                                <span class="rating-text">4.98 (124)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
                 </div>
-                <p class="review-text">“Emily was the perfect host for a solo traveler.
-                    Emily was so nice and welcoming to her house.
-                    She had amazing itineraries that I personally enjoyed.”</p>
+                <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
             </div>
-            <div class="review-card">
-                <p class="reviewer-name">Sarah</p>
-                <p class="review-destination">to Emily in Denmark</p>
-                <div class="stars">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <div class="container">
+                <!-- First Card -->
+                <div class="listing-card">
+                    <div class="listing-header">
+                        <div class="profile-section">
+                            <div class="profile-image-container">
+                                <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
+                                <div class="verified-badge">✓</div>
+                            </div>
+                            <div class="host-info">
+                                <h2 class="host-name">Host Name</h2>
+                                <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
+                                <div class="host-rating">
+                                    <span class="star-icon">★</span>
+                                    <span class="rating-text">4.98 (124)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
+                    </div>
+                    <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
                 </div>
-                <p class="review-text">“Emily was the perfect host for a solo traveler.
-                    Emily was so nice and welcoming to her house.
-                    She had amazing itineraries that I personally enjoyed.”</p>
-            </div>
-        </div>
-    </div>
-    </div>
+                <div class="container">
+                    <!-- First Card -->
+                    <div class="listing-card">
+                        <div class="listing-header">
+                            <div class="profile-section">
+                                <div class="profile-image-container">
+                                    <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
+                                    <div class="verified-badge">✓</div>
+                                </div>
+                                <div class="host-info">
+                                    <h2 class="host-name">Host Name</h2>
+                                    <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
+                                    <div class="host-rating">
+                                        <span class="star-icon">★</span>
+                                        <span class="rating-text">4.98 (124)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
+                        </div>
+                        <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
+                    </div>
+                    <div class="container">
+                        <!-- First Card -->
+                        <div class="listing-card">
+                            <div class="listing-header">
+                                <div class="profile-section">
+                                    <div class="profile-image-container">
+                                        <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
+                                        <div class="verified-badge">✓</div>
+                                    </div>
+                                    <div class="host-info">
+                                        <h2 class="host-name">Host Name</h2>
+                                        <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
+                                        <div class="host-rating">
+                                            <span class="star-icon">★</span>
+                                            <span class="rating-text">4.98 (124)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
+                            </div>
+                            <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
+                        </div>
+                        <div class="container">
+                            <!-- First Card -->
+                            <div class="listing-card">
+                                <div class="listing-header">
+                                    <div class="profile-section">
+                                        <div class="profile-image-container">
+                                            <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
+                                            <div class="verified-badge">✓</div>
+                                        </div>
+                                        <div class="host-info">
+                                            <h2 class="host-name">Host Name</h2>
+                                            <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
+                                            <div class="host-rating">
+                                                <span class="star-icon">★</span>
+                                                <span class="rating-text">4.98 (124)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
+                                </div>
+                                <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
+                            </div>
 </main>
 </body>
 </html>
@@ -258,7 +335,7 @@ if($mysql->connect_errno) {
         position:absolute;
     }
 
-    .results-grid {
+    .review-grid {
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -267,7 +344,7 @@ if($mysql->connect_errno) {
         padding: 0 20px;
     }
 
-    .results-card {
+    .review-card {
         width: 100%;
         max-width: 800px;
         margin: 0 auto;
@@ -283,7 +360,7 @@ if($mysql->connect_errno) {
         margin: 0;
     }
 
-    .result-destination {
+    .review-destination {
         font-size: 0.9em;
         color: #888;
         margin-top: 5px;
@@ -307,7 +384,138 @@ if($mysql->connect_errno) {
     }
 
     .resultnumber{
-        text-align:center;
+        text-align: center;
+        padding:20px;
+    }
 
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .listing-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+    }
+
+    .listing-header {
+        background-color: #f0f7ff;
+        padding: 20px;
+        flex: 1;
+    }
+
+    .profile-section {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .profile-image-container {
+        position: relative;
+        width: 64px;
+        height: 64px;
+    }
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .verified-badge {
+        position: absolute;
+        bottom: -4px;
+        right: -4px;
+        background-color: #0066ff;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        border: 2px solid white;
+    }
+
+    .host-info {
+        flex-grow: 1;
+    }
+
+    .host-name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .host-location {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .host-rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .star-icon {
+        color: #ffd700;
+        font-size: 16px;
+    }
+
+    .rating-text {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .host-description {
+        margin-top: 12px;
+        font-style: italic;
+        color: #444;
+        font-size: 14px;
+    }
+
+    .property-image {
+        width: 400px;
+        height: auto;
+        object-fit: cover;
+    }
+
+    @media (max-width: 800px) {
+        .listing-card {
+            flex-direction: column;
+        }
+
+        .property-image {
+            width: 100%;
+            height: 240px;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .listing-header {
+            padding: 15px;
+        }
     }
 </style>
