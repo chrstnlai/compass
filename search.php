@@ -337,16 +337,13 @@ if($mysql->connect_errno) {
 
     .featured-card img {
         display: block;
-    }
-
-    .profilepic {
-        position:absolute;
+        width: 100%;
+        height: 100%;
     }
 
     .profile-image-container {
-        position: relative;
+        position: absolute;
         left: 110px;
-        bottom: 30px;
         width: 64px;
         height: 64px;
     }
