@@ -131,7 +131,7 @@ if($mysql->connect_errno) {
         <div class="review-grid">
             <div class="review-card">
                 <p class="reviewer-name">Sarah</p>
-                <p class="review-destination">to Emily in Denmark</p>
+                <p class="review-destination">to Emily in Copenhagen</p>
                 <div class="stars">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
@@ -140,24 +140,24 @@ if($mysql->connect_errno) {
                     She had amazing itineraries that I personally enjoyed.”</p>
             </div>
             <div class="review-card">
-                <p class="reviewer-name">Sarah</p>
-                <p class="review-destination">to Emily in Denmark</p>
+                <p class="reviewer-name">Ashley</p>
+                <p class="review-destination">to Tiffany in San Diego</p>
                 <div class="stars">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
-                <p class="review-text">“Emily was the perfect host for a solo traveler.
-                    Emily was so nice and welcoming to her house.
-                    She had amazing itineraries that I personally enjoyed.”</p>
+                <p class="review-text">“Tiffany’s place was as described.
+                    Very cute house, neighborhood and yard.
+                    You can tell she cares about the details and plants. ”</p>
             </div>
             <div class="review-card">
-                <p class="reviewer-name">Sarah</p>
-                <p class="review-destination">to Emily in Denmark</p>
+                <p class="reviewer-name">Kevin</p>
+                <p class="review-destination">to Angelica in Paris</p>
                 <div class="stars">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
-                <p class="review-text">“Emily was the perfect host for a solo traveler.
-                    Emily was so nice and welcoming to her house.
-                    She had amazing itineraries that I personally enjoyed.”</p>
+                <p class="review-text">Amazing place, great spot in the city. 
+                    Pictures don’t do it Justice especially around sunset. 
+                    Angelica was incredibly responsive, would love to come back again!</p>
             </div>
         </div>
     </div>
