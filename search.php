@@ -1,4 +1,20 @@
 <?php
+$host = "webdev.iyaserver.com";
+$userid = "anikets";
+$userpw = "AcadDev_Singh_6362298333";
+$db = "anikets_compass";
+
+$mysql = new mysqli(
+    $host,
+    $userid,
+    $userpw,
+    $db
+);
+
+if($mysql->connect_errno) {
+    echo "db connection error : " . $mysql->connect_error;
+    exit();
+}
 ?>
 
 <html>
@@ -22,10 +38,14 @@
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
-        <input type="text" placeholder="Where?">
-        <input type="text" placeholder="Check In:">
-        <input type="text" placeholder="Check Out:">
-        <img src="images/Group%2024.png">
+        <form action="results.php">
+            <input type="text" name="destination" placeholder="Where?">
+            <input type="date" name="checkin" placeholder="Check In:">
+            <input type="date" name="checkout" placeholder="Check Out:">
+            <button type="submit">
+                <img src="images/Group%2024.png" alt="Search">
+            </button>
+        </form>
     </div>
 </nav>
 <main>
@@ -139,7 +159,7 @@
                     She had amazing itineraries that I personally enjoyed.”</p>
             </div>
         </div>
-        </div>
+    </div>
     </div>
 </main>
 </body>
