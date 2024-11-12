@@ -39,7 +39,7 @@ if($mysql->connect_errno) {
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
-        <form action="results.php">
+        <form action="../results.php">
             <input type="text" name="destination" placeholder="Where?">
             <input type="date" name="checkin" placeholder="Check In:">
             <input type="date" name="checkout" placeholder="Check Out:">
@@ -86,19 +86,33 @@ if($mysql->connect_errno) {
         <h1>Featured Hosts</h1>
         <div class="featured-grid">
             <div class="featured-card">
-                <img src="images/placeholder.png">
-                <img src="images/placeholder.png" class="profilepic">
-            </div>
-            <div class="featured-card">
-                <img src="images/placeholder.png">
-            </div>
-            <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
                 <img src="images/placeholder.png">
             </div>
             <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
                 <img src="images/placeholder.png">
             </div>
             <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
+                <img src="images/placeholder.png">
+            </div>
+            <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
+                <img src="images/placeholder.png">
+            </div>
+            <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
                 <img src="images/placeholder.png">
             </div>
         </div>
@@ -108,19 +122,33 @@ if($mysql->connect_errno) {
         <h1>Recently Viewed</h1>
         <div class="featured-grid">
             <div class="featured-card">
-                <img src="images/placeholder.png">
-                <img src="images/placeholder.png" class="profilepic">
-            </div>
-            <div class="featured-card">
-                <img src="images/placeholder.png">
-            </div>
-            <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
                 <img src="images/placeholder.png">
             </div>
             <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
                 <img src="images/placeholder.png">
             </div>
             <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
+                <img src="images/placeholder.png">
+            </div>
+            <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
+                <img src="images/placeholder.png">
+            </div>
+            <div class="featured-card">
+                <div class="profile-image-container">
+                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                </div>
                 <img src="images/placeholder.png">
             </div>
         </div>
@@ -155,8 +183,8 @@ if($mysql->connect_errno) {
                 <div class="stars">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
-                <p class="review-text">Amazing place, great spot in the city. 
-                    Pictures don’t do it Justice especially around sunset. 
+                <p class="review-text">Amazing place, great spot in the city.
+                    Pictures don’t do it Justice especially around sunset.
                     Angelica was incredibly responsive, would love to come back again!</p>
             </div>
         </div>
@@ -325,6 +353,21 @@ if($mysql->connect_errno) {
 
     .profilepic {
         position:absolute;
+    }
+
+    .profile-image-container {
+        position: relative;
+        left: 110px;
+        bottom: 30px;
+        width: 64px;
+        height: 64px;
+    }
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
     }
 
     .review-grid {
