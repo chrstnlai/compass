@@ -87,33 +87,27 @@ if($mysql->connect_errno) {
         <div class="featured-grid">
             <div class="featured-card">
                 <div class="profile-image-container">
-                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                    <img src="images/host/profile1.png" alt="Host profile" class="profile-image">
                 </div>
-                <img src="images/placeholder.png">
+                <img src="images/host/denmark.png">
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
-                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                    <img src="images/host/profile2.png" alt="Host profile" class="profile-image">
                 </div>
-                <img src="images/placeholder.png">
+                <img src="images/host/london.png">
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
-                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                    <img src="images/host/profile3.png" alt="Host profile" class="profile-image">
                 </div>
-                <img src="images/placeholder.png">
+                <img src="images/host/la.png">
             </div>
             <div class="featured-card">
                 <div class="profile-image-container">
-                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
+                    <img src="images/host/profile4.png" alt="Host profile" class="profile-image">
                 </div>
-                <img src="images/placeholder.png">
-            </div>
-            <div class="featured-card">
-                <div class="profile-image-container">
-                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
-                </div>
-                <img src="images/placeholder.png">
+                <img src="images/host/paris.png">
             </div>
         </div>
     </div>
@@ -121,12 +115,6 @@ if($mysql->connect_errno) {
     <div class="recent">
         <h1>Recently Viewed</h1>
         <div class="featured-grid">
-            <div class="featured-card">
-                <div class="profile-image-container">
-                    <img src="images/placeholder.png" alt="Host profile" class="profile-image">
-                </div>
-                <img src="images/placeholder.png">
-            </div>
             <div class="featured-card">
                 <div class="profile-image-container">
                     <img src="images/placeholder.png" alt="Host profile" class="profile-image">
