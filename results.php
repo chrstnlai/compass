@@ -64,16 +64,16 @@ if($mysql->connect_errno) {
             <div class="listing-card">
                 <div class="listing-header">
                     <div class="profile-section">
-                        <div class="profile-image-container">
-                            <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
-                            <div class="verified-badge">✓</div>
-                        </div>
                         <div class="host-info">
                             <h2 class="host-name">Host Name</h2>
                             <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
                             <div class="host-rating">
                                 <span class="star-icon">★</span>
                                 <span class="rating-text">4.98 (124)</span>
+                            </div>
+                            <div class="profile-image-container">
+                                <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
+                                <div class="verified-badge">✓</div>
                             </div>
                         </div>
                     </div>
@@ -435,7 +435,6 @@ if($mysql->connect_errno) {
     .profile-image {
         width: 100%;
         height: 100%;
-        border-radius: 50%;
         object-fit: cover;
     }
 
@@ -463,12 +462,13 @@ if($mysql->connect_errno) {
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 4px;
+        text-align: left;
     }
-
     .host-location {
         color: #666;
         font-size: 14px;
         margin-bottom: 4px;
+        text-align: left;
     }
 
     .host-rating {
@@ -496,7 +496,7 @@ if($mysql->connect_errno) {
 
     .property-image {
         width: 400px;
-        height: auto;
+        height: 200px;
         object-fit: cover;
     }
 
