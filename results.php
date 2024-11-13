@@ -1,20 +1,23 @@
 <?php
-$host = "webdev.iyaserver.com";
-$userid = "anikets";
-$userpw = "AcadDev_Singh_6362298333";
-$db = "anikets_compass";
+// Database connection settings
+$serverName = "webdev.iyaserver.com";
+$username = "anikets";
+$password = "AcadDev_Singh_6362298333";
+$databaseName = "anikets_compass";
 
-$mysql = new mysqli(
-    $host,
-    $userid,
-    $userpw,
-    $db
-);
+// Create a new MySQLi instance and establish a connection
+$connection = new mysqli($serverName, $username, $password, $databaseName);
 
-if($mysql->connect_errno) {
-    echo "db connection error : " . $mysql->connect_error;
+// Check for a connection error
+if ($connection->connect_errno) {
+    echo "Database connection error: " . $connection->connect_error;
     exit();
 }
+
+// Get search parameters from request, with fallback to empty strings if not provided
+$searchDestination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '';
+$searchCheckinDate = isset($_REQUEST['checkin']) ? $_REQUEST['checkin'] : '';
+$searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 ?>
 
@@ -35,7 +38,7 @@ if($mysql->connect_errno) {
 </div>
 <nav>
     <div class=" title">
-        <marquee scrollamount="20" loop="10">Results</marquee>
+        Results
     </div>
     <div class="search">
         <form action="results.php">
@@ -50,125 +53,81 @@ if($mysql->connect_errno) {
     <div class = centered>
         <h2>
             <?php
-            echo "You are seeing results from " . $_REQUEST["destination"];
-            echo " for properties available from " .$_REQUEST["checkin"]. "to ". $_REQUEST["checkout"]; ;
+            if ($searchDestination && $searchCheckinDate && $searchCheckoutDate) {
+                echo "You are seeing results for " . htmlspecialchars($searchDestination) . " from " . htmlspecialchars($searchCheckinDate) . " to " . htmlspecialchars($searchCheckoutDate);
+            }
+            else if ($searchDestination) {
+                echo "You are seeing results for " . htmlspecialchars($searchDestination);
+            }
+            else {
+                echo "No search criteria provided.";
+            }
             ?>
         </h2>
     </div>
 </nav>
 <main>
     <div class = resultnumber>
-        <p>Showcasing 100 out of 13,570 results </p>
         <div class="container">
-            <!-- First Card -->
-            <div class="listing-card">
-                <div class="listing-header">
-                    <div class="profile-section">
-                        <div class="host-info">
-                            <h2 class="host-name">Host Name</h2>
-                            <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
-                            <div class="host-rating">
-                                <span class="star-icon">★</span>
-                                <span class="rating-text">4.98 (124)</span>
-                            </div>
-                            <div class="profile-image-container">
-                                <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
-                                <div class="verified-badge">✓</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
-                </div>
-                <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
-            </div>
-            <div class="container">
-                <!-- First Card -->
-                <div class="listing-card">
-                    <div class="listing-header">
-                        <div class="profile-section">
-                            <div class="profile-image-container">
-                                <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
-                                <div class="verified-badge">✓</div>
-                            </div>
-                            <div class="host-info">
-                                <h2 class="host-name">Host Name</h2>
-                                <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
-                                <div class="host-rating">
-                                    <span class="star-icon">★</span>
-                                    <span class="rating-text">4.98 (124)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
-                    </div>
-                    <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
-                </div>
-                <div class="container">
-                    <!-- First Card -->
-                    <div class="listing-card">
-                        <div class="listing-header">
-                            <div class="profile-section">
-                                <div class="profile-image-container">
-                                    <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
-                                    <div class="verified-badge">✓</div>
-                                </div>
+            <?php
+            // Query to fetch listings based on the destination and optional date range
+            $query = "SELECT * FROM Locations WHERE country LIKE '%$searchDestination%' 
+            OR city LIKE '%$searchDestination%' 
+            OR address LIKE '%$searchDestination%'";
+
+            //            if ($searchCheckinDate && $searchCheckoutDate) {
+            //                $query .= " AND checkin >= '$searchCheckinDate' AND checkout <= '$searchCheckoutDate'";
+            //            }
+
+            // Execute the main query
+            $result = $connection->query($query);
+
+            if (!$result) {
+                die("Query failed: " . $connection->error);
+            }
+
+            // Process each location record
+            while ($location = $result->fetch_assoc()) {
+                $locationID = $location['locationID'];
+
+                // Query to find the user associated with the location
+                $userLocationQuery = "SELECT userID FROM UsersxLocations WHERE locationID = '$locationID' LIMIT 1";
+                $userLocationResult = $connection->query($userLocationQuery);
+
+                if ($userLocationResult && $userRow = $userLocationResult->fetch_assoc()) {
+                    $userID = $userRow['userID'];
+
+                    // Fetch user details based on userID
+                    $userInfoQuery = "SELECT * FROM Users WHERE userID = '$userID'";
+                    $userInfoResult = $connection->query($userInfoQuery);
+
+                    if ($userInfoRow = $userInfoResult->fetch_assoc()) {
+                        echo '<div class="listing-card">
+                            <div class="listing-header">
+                                <div class="profile-section">
                                 <div class="host-info">
-                                    <h2 class="host-name">Host Name</h2>
+                                    <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
                                     <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
                                     <div class="host-rating">
                                         <span class="star-icon">★</span>
-                                        <span class="rating-text">4.98 (124)</span>
+                                        <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
                                     </div>
-                                </div>
-                            </div>
-                            <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
-                        </div>
-                        <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
-                    </div>
-                    <div class="container">
-                        <!-- First Card -->
-                        <div class="listing-card">
-                            <div class="listing-header">
-                                <div class="profile-section">
                                     <div class="profile-image-container">
                                         <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
                                         <div class="verified-badge">✓</div>
                                     </div>
-                                    <div class="host-info">
-                                        <h2 class="host-name">Host Name</h2>
-                                        <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
-                                        <div class="host-rating">
-                                            <span class="star-icon">★</span>
-                                            <span class="rating-text">4.98 (124)</span>
-                                        </div>
-                                    </div>
                                 </div>
-                                <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
                             </div>
-                            <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
+                            <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
                         </div>
-                        <div class="container">
-                            <!-- First Card -->
-                            <div class="listing-card">
-                                <div class="listing-header">
-                                    <div class="profile-section">
-                                        <div class="profile-image-container">
-                                            <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
-                                            <div class="verified-badge">✓</div>
-                                        </div>
-                                        <div class="host-info">
-                                            <h2 class="host-name">Host Name</h2>
-                                            <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
-                                            <div class="host-rating">
-                                                <span class="star-icon">★</span>
-                                                <span class="rating-text">4.98 (124)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="host-description">"I love hosting guests and showing them around LA! There's so much more than the Hollywood sign and the beach."</p>
-                                </div>
-                                <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
-                            </div>
+                        <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
+                    </div>';
+                    }
+                }
+            }
+            ?>
+        </div>
+    </div>
 </main>
 </body>
 </html>
@@ -179,15 +138,14 @@ if($mysql->connect_errno) {
         margin: 0;
     }
 
-    marquee {
+    .title {
         font-size: 72.702px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
         color:white;
         font-family: "Krona One";
-        margin-bottom: 20px;
-        margin-top: 110px;
+        padding-top: 110px;
     }
     nav {
         background-color: #1B5299;
@@ -381,6 +339,8 @@ if($mysql->connect_errno) {
     .centered{
         text-align: center;
         color:white;
+        padding-top: 20px;
+        font-size: 0.7em;
     }
 
     .resultnumber{

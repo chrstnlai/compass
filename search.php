@@ -39,7 +39,7 @@ if($mysql->connect_errno) {
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
-        <form action="../results.php">
+        <form action="results.php">
             <input type="text" name="destination" placeholder="Where?">
             <input type="date" name="checkin" placeholder="Check In:">
             <input type="date" name="checkout" placeholder="Check Out:">
@@ -191,9 +191,11 @@ if($mysql->connect_errno) {
 </html>
 
 <style>
+
     body {
         font-family: lato;
         margin: 0;
+        padding: 0;
     }
 
     marquee {
