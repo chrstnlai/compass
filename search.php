@@ -29,13 +29,13 @@ if($mysql->connect_errno) {
 <nav>
     <div class="navbar">
         <div class="logo">
-            <img src="images/compasslogo_db-04%201.png" alt="logoimage">
+            <img src="images/CompassTransparent.png" alt="logoimage">
             <h2>COMPASS</h2>
         </div>
-        <img src="images/Group%2023.png" alt="login">
+        <img src="images/Login.png" alt="login" class="login-icon">
     </div>
     <div class=" title">
-        <marquee scrollamount="20" loop="2">Where Are You Traveling?</marquee>
+        <marquee scrollamount="20" loop="2">WHERE ARE YOU TRAVELING?</marquee>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
@@ -44,7 +44,7 @@ if($mysql->connect_errno) {
             <input type="date" name="checkin" placeholder="Check In:">
             <input type="date" name="checkout" placeholder="Check Out:">
             <button type="submit">
-                <img src="images/Group%2024.png" alt="Search">
+                <img src="images/Search.png" alt="Search" class="search-icon">
             </button>
         </form>
     </div>
@@ -227,11 +227,11 @@ if($mysql->connect_errno) {
         align-items: center;
         gap: 5px;
     }
-    .navbar img logoimage{
+    .navbar .logo img {
         width: 72px;
         height: 72px;
-        flex-shrink: 0;
     }
+
     nav .title {
         text-align: center;
     }
@@ -263,19 +263,33 @@ if($mysql->connect_errno) {
     main {
         align-items: center;
     }
+
     .search {
         gap: 10px;
         text-align: center;
         margin-top: 75px;
     }
 
-    .search img {
-        width: 35px;
-        height: 35px;
+    .search button {
+        background: none; /* Removes the gray background */
+        border: none; /* Removes the border */
+        cursor: pointer; /* Changes the cursor to a pointer */
+        padding: 0; /* Removes padding if necessary */
+    }
+
+    .search img {;
         flex-shrink: 0;
         position: relative;
-        top: 12px;
         padding-left: 10px;
+    }
+
+    .search-icon {
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+    }
+
+    .login-icon {
+        width: 75px;
     }
 
     .explore h1 {
