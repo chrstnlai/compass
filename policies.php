@@ -23,6 +23,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 <html>
 <head>
+
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -31,42 +32,109 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 <body>
 <div class="navbar">
     <div class="logo">
+        <img src="compass/images/compasslogo_db-04 1.png" alt="logoimage">
         <h2>COMPASS</h2>
     </div>
+    <img src="images/Group 23.png" alt="login">
 </div>
 <nav>
     <div class=" title">
-        Results
+        Safety Policies
+        <div class="subtitle">
+            Our commitment to your best travel experience.
+        </div>
     </div>
-    <div class="search">
-        <form action="results.php">
-            <input type="text" name="destination" placeholder="Where?">
-            <input type="date" name="checkin" placeholder="Check In:">
-            <input type="date" name="checkout" placeholder="Check Out:">
-            <button type="submit">
-                <img src="images/Group%2024.png" alt="Search">
-            </button>
-        </form>
-    </div>
-    <div class = centered>
-        <h2>
-            <?php
-            if ($searchDestination && $searchCheckinDate && $searchCheckoutDate) {
-                echo "You are seeing results for " . htmlspecialchars($searchDestination) . " from " . htmlspecialchars($searchCheckinDate) . " to " . htmlspecialchars($searchCheckoutDate);
-            }
-            else if ($searchDestination) {
-                echo "You are seeing results for " . htmlspecialchars($searchDestination);
-            }
-            else {
-                echo "No search criteria provided.";
-            }
-            ?>
-        </h2>
-    </div>
+
+
 </nav>
 <main>
     <div class = resultnumber>
+        <br><br>
         <div class="container">
+
+            <div class="section">
+                <h2>1. Host Verification & Screening</h2>
+                <ul>
+                    <li><strong>Background Checks:</strong> Verify hosts’ identities through government-issued IDs, criminal background checks, and other relevant documentation.</li>
+                    <li><strong>Profile Verification:</strong> Implement a multi-step verification process, including video introductions and social media account linkage.</li>
+                    <li><strong>Review System:</strong> Allow users to leave reviews and ratings after each interaction. Highlight highly-rated and trusted hosts.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>2. Secure Communication</h2>
+                <ul>
+                    <li><strong>In-App Messaging:</strong> Require all communication to happen within the app to monitor and flag inappropriate or unsafe behavior.</li>
+                    <li><strong>Safety Keywords/Alerts:</strong> Use AI to detect concerning language and alert moderators if flagged.</li>
+                    <li><strong>Emergency Contact Sharing:</strong> Allow travelers to share trip details, including location and host identity, with a trusted third party.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. Code of Conduct</h2>
+                <ul>
+                    <li><strong>Host & Traveler Guidelines:</strong> Establish clear behavioral expectations for both parties, with zero tolerance for harassment, discrimination, or illegal activity.</li>
+                    <li><strong>Cancellation Policies:</strong> Define terms for rescheduling or canceling meetups to avoid exploitation.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>4. Safety Tools</h2>
+                <ul>
+                    <li><strong>SOS Button:</strong> Provide a one-touch emergency alert that notifies local authorities and pre-saved contacts.</li>
+                    <li><strong>Live GPS Tracking:</strong> Allow travelers to enable live location sharing with trusted friends or family during activities.</li>
+                    <li><strong>Check-In Notifications:</strong> Send automated prompts to travelers to confirm safety throughout their experience.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>5. Insurance & Liability</h2>
+                <ul>
+                    <li><strong>Travel Insurance Options:</strong> Partner with insurance providers to offer plans covering accidents or emergencies.</li>
+                    <li><strong>Liability Waivers:</strong> Clearly define the app’s role and limit liability for accidents or disputes while ensuring legal safeguards.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>6. Host Training</h2>
+                <ul>
+                    <li><strong>Cultural Sensitivity:</strong> Train hosts to provide culturally respectful and inclusive experiences.</li>
+                    <li><strong>Safety Practices:</strong> Educate hosts on managing emergencies, understanding legal implications, and ensuring traveler comfort.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>7. Moderation & Reporting</h2>
+                <ul>
+                    <li><strong>Complaint System:</strong> Offer easy in-app options to report misconduct, with a rapid response team addressing issues within 24 hours.</li>
+                    <li><strong>Ban and Blacklist System:</strong> Immediately remove users who violate safety policies or are flagged by multiple travelers/hosts.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>8. Transparent Pricing</h2>
+                <ul>
+                    <li><strong>Pre-Set Costs:</strong> Require clear upfront pricing to avoid disagreements or exploitation.</li>
+                    <li><strong>Secure Payment Gateway:</strong> Mandate all payments through the app to prevent monetary disputes and enhance security.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>9. Local Law Compliance</h2>
+                <ul>
+                    <li><strong>Country-Specific Policies:</strong> Tailor safety protocols to adhere to local legal requirements, including labor and tourism regulations.</li>
+                    <li><strong>Partner with Local Authorities:</strong> Establish collaborations with local governments or tourism boards for additional oversight and resources.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>10. Community Engagement</h2>
+                <ul>
+                    <li><strong>Safety Tips:</strong> Provide pre-trip safety tips and cultural guides for travelers.</li>
+                    <li><strong>Feedback Mechanism:</strong> Regularly collect feedback on user experiences to improve policies and app features.</li>
+                </ul>
+            </div>
+
             <?php
             // Query to fetch listings based on the destination and optional date range
             $query = "SELECT * FROM Locations WHERE country LIKE '%$searchDestination%' 
@@ -84,49 +152,15 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                 die("Query failed: " . $connection->error);
             }
 
-            // Process each location record
-            while ($location = $result->fetch_assoc()) {
-                $locationID = $location['locationID'];
-
-                // Query to find the user associated with the location
-                $userLocationQuery = "SELECT userID FROM UsersxLocations WHERE locationID = '$locationID' LIMIT 1";
-                $userLocationResult = $connection->query($userLocationQuery);
-
-                if ($userLocationResult && $userRow = $userLocationResult->fetch_assoc()) {
-                    $userID = $userRow['userID'];
-
-                    // Fetch user details based on userID
-                    $userInfoQuery = "SELECT * FROM Users WHERE userID = '$userID'";
-                    $userInfoResult = $connection->query($userInfoQuery);
-
-                    if ($userInfoRow = $userInfoResult->fetch_assoc()) {
-                        echo '<div class="listing-card">
-                            <div class="listing-header">
-                                <div class="profile-section">
-                                <div class="host-info">
-                                    <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
-                                    <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
-                                    <div class="host-rating">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
-                                    </div>
-                                    <div class="profile-image-container">
-                                        <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
-                                        <div class="verified-badge">✓</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
-                        </div>
-                        <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
-                    </div>';
-                    }
-                }
-            }
             ?>
         </div>
     </div>
 </main>
+
+<footer>
+    <p>&copy; 2024 Compass. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
 
@@ -141,14 +175,57 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        color:white;
+        color:transparent;
+        -webkit-text-stroke: 3px white;
+        position: relative;
         font-family: "Krona One";
         padding-top: 110px;
+    }
+    .subtitle {
+
+        color:transparent;
+        font-size: 24pt;
+        -webkit-text-stroke: 1px white;
+    }
+    .subtitle::before{
+        content: "Our commitment to your best travel experience.";
+        font-size: 24pt;
+        position: absolute;
+        width: 0%;
+        height:20%;
+        overflow: hidden;
+        color: white;
+        border-right: 8px solid white;
+        transition: 5s ease-in-out;
+    }
+    .subtitle:hover::before{
+        width: max-content;
+        filter: drop-shadow(0 0 25px white);
+    }
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+        text-align: left;
+    }
+    li {
+        margin: 5px 0;
+        text-align: left;
+    }
+    .section {
+        text-align: left;
+        margin-bottom: 20px;
+        padding: 10pt;
+        border-radius: 15px;
+    }
+    .section:hover {
+        color: white;
+        background-color: #1B5299;
+        transition: 1s;
     }
     nav {
         background-color: #1B5299;
         margin: 0;
-        padding: 0 0 100px 0;
+        padding: 0 0 100px 100px;
     }
     .navbar {
         display: flex;
