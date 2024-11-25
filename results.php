@@ -31,8 +31,10 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 <body>
 <div class="navbar">
     <div class="logo">
+        <img src="compass/images/compasslogo_db-04 1.png" alt="logoimage">
         <h2>COMPASS</h2>
     </div>
+    <img src="images/Group 23.png" alt="login">
 </div>
 <nav>
     <div class=" title">
