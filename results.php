@@ -34,7 +34,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 <body>
 <div class="navbar">
     <div class="logo">
-        <img src="compass/images/compasslogo_db-04 1.png" alt="logoimage">
+        <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
         <h2>COMPASS</h2>
     </div>
     <img src="images/Group 23.png" alt="login">
@@ -104,6 +104,27 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
                     if ($userInfoRow = $userInfoResult->fetch_assoc()) {
                         echo '<div class="listing-card">
+<<<<<<< HEAD
+                            <div class="listing-header">
+                                <div class="profile-section">
+                                <div class="host-info">
+                                    <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
+                                    <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
+                                    <div class="host-rating">
+                                        <span class="star-icon">★</span>
+                                        <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
+                                    </div>
+                                    <div class="profile-image-container">
+                                      <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image" style="width:100px; height:auto;">
+                                        <div class="verified-badge">✓</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
+                        </div>
+                        <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
+                    </div>';
+=======
     <div class="listing-header">
         <div class="profile-section">
             <div class="host-info">
@@ -125,6 +146,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     <img src="placeholder.jpg" alt="Property image" class="property-image">
 </div>';
 
+>>>>>>> 8be477a6884460d9178baadb2686693d7df96533
                     }
                 }
             }
@@ -488,6 +510,11 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
         .listing-header {
             padding: 15px;
+        }
+
+        .logo{
+            width:20px;
+            height:20px;
         }
     }
 </style>
