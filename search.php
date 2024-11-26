@@ -29,11 +29,9 @@ if($mysql->connect_errno) {
 <nav>
     <div class="navbar">
         <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage">
             <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
             <h2>COMPASS</h2>
         </div>
-        <img src="images/Login.png" alt="login" class="login-icon">
         <div class="menu">
             <div class="menu-toggle">
                 <div class="profile-icon">
@@ -56,10 +54,6 @@ if($mysql->connect_errno) {
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
-        <form action="results.php">
-            <input type="text" name="destination" placeholder="Where?">
-            <input type="date" name="checkin" placeholder="Check In:">
-            <input type="date" name="checkout" placeholder="Check Out:">
     <form action="results.php">
             <input type="text"  placeholder="Where?" class="search-input">
             <input type="text"  placeholder="Check In:" class="search-input">
@@ -233,7 +227,6 @@ if($mysql->connect_errno) {
     nav {
         background-color: #1B5299;
         margin: 0;
-        padding: 0 0 100px 0;
         padding: 0 0 50px 0;
     }
 
@@ -243,7 +236,6 @@ if($mysql->connect_errno) {
         align-items: center;
         background-color: #1B5299;
         color: #3b1b06;
-        padding: 25px 93.26px 45.63px 93.26px;
         padding: 25px 93.26px 20px 93.26px;
     }
 
@@ -369,10 +361,6 @@ if($mysql->connect_errno) {
     }
 
     .search button {
-        background: none; /* Removes the gray background */
-        border: none; /* Removes the border */
-        cursor: pointer; /* Changes the cursor to a pointer */
-        padding: 0; /* Removes padding if necessary */
         background: none;
         border: none;
         cursor: pointer;
@@ -386,8 +374,6 @@ if($mysql->connect_errno) {
     }
 
     .search-icon {
-        width: 30px; /* Adjust width as needed */
-        height: 30px; /* Adjust height as needed */
         width: 30px;
         height: 30px;
     }
