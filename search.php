@@ -190,7 +190,7 @@ if($mysql->connect_errno) {
 </body>
 </html>
 
-<style>
+<style> 
 
     body {
         font-family: lato;
