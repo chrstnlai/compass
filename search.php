@@ -29,7 +29,7 @@ if($mysql->connect_errno) {
 <nav>
     <div class="navbar">
         <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage">
+            <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
             <h2>COMPASS</h2>
         </div>
         <img src="images/Login.png" alt="login" class="login-icon">

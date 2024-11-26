@@ -31,7 +31,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 <body>
 <div class="navbar">
     <div class="logo">
-        <img src="compass/images/compasslogo_db-04 1.png" alt="logoimage">
+        <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
         <h2>COMPASS</h2>
     </div>
     <img src="images/Group 23.png" alt="login">
@@ -113,7 +113,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                                         <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
                                     </div>
                                     <div class="profile-image-container">
-                                        <img src="/api/placeholder/64/64" alt="Host profile" class="profile-image">
+                                      <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image" style="width:100px; height:auto;">
                                         <div class="verified-badge">✓</div>
                                     </div>
                                 </div>
@@ -476,6 +476,11 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
         .listing-header {
             padding: 15px;
+        }
+
+        .logo{
+            width:20px;
+            height:20px;
         }
     }
 </style>
