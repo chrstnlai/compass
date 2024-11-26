@@ -7,7 +7,7 @@ $db = "anikets_compass";
 $mysql = new mysqli(
     $host,
     $userid,
-    $userpw,
+    $userpw, 
     $db
 );
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     echo "Account Created!";
-    
+
 } else {
     echo "Invalid request method.";
 }

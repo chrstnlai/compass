@@ -7,7 +7,7 @@ $db = "anikets_compass";
 $mysql = new mysqli(
     $host,
     $userid,
-    $userpw,
+    $userpw, 
     $db
 );
 
