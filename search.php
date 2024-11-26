@@ -29,20 +29,35 @@ if($mysql->connect_errno) {
 <nav>
     <div class="navbar">
         <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage">
+            <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
             <h2>COMPASS</h2>
         </div>
-        <img src="images/Login.png" alt="login" class="login-icon">
+        <div class="menu">
+            <div class="menu-toggle">
+                <div class="profile-icon">
+                    <img src="images/Login.png" alt="login" class="login-icon">
+                </div>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="#">Log in</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Referral</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <div class=" title">
         <marquee scrollamount="20" loop="2">WHERE ARE YOU TRAVELING?</marquee>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
-        <form action="results.php">
-            <input type="text" name="destination" placeholder="Where?">
-            <input type="date" name="checkin" placeholder="Check In:">
-            <input type="date" name="checkout" placeholder="Check Out:">
+    <form action="results.php">
+            <input type="text"  placeholder="Where?" class="search-input">
+            <input type="text"  placeholder="Check In:" class="search-input">
+            <input type="text"  placeholder="Check Out:" class="search-input">
             <button type="submit">
                 <img src="images/Search.png" alt="Search" class="search-icon">
             </button>
@@ -208,18 +223,20 @@ if($mysql->connect_errno) {
         margin-bottom: 20px;
         margin-top: 110px;
     }
+
     nav {
         background-color: #1B5299;
         margin: 0;
-        padding: 0 0 100px 0;
+        padding: 0 0 50px 0;
     }
+
     .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: #1B5299;
         color: #3b1b06;
-        padding: 25px 93.26px 45.63px 93.26px;
+        padding: 25px 93.26px 20px 93.26px;
     }
 
     .navbar .logo {
@@ -235,6 +252,79 @@ if($mysql->connect_errno) {
     nav .title {
         text-align: center;
     }
+
+    .search-input {
+        width: 150px;
+        height: 30px;
+        padding: 10px;
+        border: 2px solid white;
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+        font-size: 13px;
+        outline: none;
+    }
+
+    .search-input::placeholder {
+        color: white;
+    }
+
+    .menu {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile-icon {
+        font-size: 24px;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        width: 200px;
+    }
+
+    .dropdown-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dropdown-menu ul li {
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown-menu ul li:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-menu ul li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .dropdown-menu ul li a:hover {
+        color: #007bff;
+    }
+
+    .menu:hover .dropdown-menu {
+        display: block;
+    }
+
 
     h1 {
         font-size:25px;
@@ -271,10 +361,10 @@ if($mysql->connect_errno) {
     }
 
     .search button {
-        background: none; /* Removes the gray background */
-        border: none; /* Removes the border */
-        cursor: pointer; /* Changes the cursor to a pointer */
-        padding: 0; /* Removes padding if necessary */
+        background: none; 
+        border: none;
+        cursor: pointer; 
+        padding: 0;
     }
 
     .search img {;
@@ -284,8 +374,8 @@ if($mysql->connect_errno) {
     }
 
     .search-icon {
-        width: 30px; /* Adjust width as needed */
-        height: 30px; /* Adjust height as needed */
+        width: 30px; 
+        height: 30px; 
     }
 
     .login-icon {
