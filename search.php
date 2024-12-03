@@ -18,7 +18,7 @@ if($mysql->connect_errno) {
 
 ?>
 
-<html>
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -32,6 +32,9 @@ if($mysql->connect_errno) {
             <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
             <h2>COMPASS</h2>
         </div>
+        <div class="aboutus">
+            <a href="about.php">About Us</a>
+        </div>
         <div class="menu">
             <div class="menu-toggle">
                 <div class="profile-icon">
@@ -41,7 +44,6 @@ if($mysql->connect_errno) {
                     <ul>
                         <li><a href="#">Sign up</a></li>
                         <li><a href="#">Log in</a></li>
-                        <li><a href="#">About us</a></li>
                         <li><a href="#">Referral</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
@@ -54,7 +56,7 @@ if($mysql->connect_errno) {
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
-    <form action="results.php">
+        <form action="results.php">
             <input type="text"  placeholder="Where?" class="search-input">
             <input type="text"  placeholder="Check In:" class="search-input">
             <input type="text"  placeholder="Check Out:" class="search-input">
@@ -205,7 +207,7 @@ if($mysql->connect_errno) {
 </body>
 </html>
 
-<style> 
+<style>
 
     body {
         font-family: lato;
@@ -253,6 +255,10 @@ if($mysql->connect_errno) {
         text-align: center;
     }
 
+    .navbar .aboutus {
+        margin-left: auto;
+        padding-right: 35px;
+    }
     .search-input {
         width: 150px;
         height: 30px;
@@ -357,13 +363,13 @@ if($mysql->connect_errno) {
     .search {
         gap: 10px;
         text-align: center;
-        margin-top: 75px;
+        margin-top: 60px;
     }
 
     .search button {
-        background: none; 
+        background: none;
         border: none;
-        cursor: pointer; 
+        cursor: pointer;
         padding: 0;
     }
 
@@ -374,8 +380,8 @@ if($mysql->connect_errno) {
     }
 
     .search-icon {
-        width: 30px; 
-        height: 30px; 
+        width: 30px;
+        height: 30px;
     }
 
     .login-icon {
