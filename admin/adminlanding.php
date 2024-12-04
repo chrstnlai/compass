@@ -43,36 +43,35 @@ if($mysql->connect_errno) {
         <div id="users">
             <h2>Users</h2>
             <button>Add</button>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button>Edit/Delete</button>
         </div>
 
         <div id="locations">
             <h2>Locations</h2>
             <button>Add</button>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button>Edit/Delete</button>
         </div>
 
         <div id="documents">
             <h2>Documents</h2>
             <button>Add</button>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button>Edit/Delete</button>
         </div>
 
         <div id="reviews">
             <h2>Reviews</h2>
             <button>Add</button>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button>Edit/Delete</button>
         </div>
 
         <div id="reports">
             <h2>Reports</h2>
-            <button>Add</button>
-            <button>Edit</button>
-            <button>Delete</button>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/reports/reportadd.php" style="text-decoration: none;">
+                <button>Add</button>
+            </a>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/reports/reporteditdelete.php" style="text-decoration: none;">
+                <button>Edit/Delete</button>
+            </a>
         </div>
     </div>
 </main>
