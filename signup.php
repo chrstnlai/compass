@@ -357,7 +357,7 @@ if ($mysql->connect_errno) {
 
     <div class="main-container">
         <h2>Create Your Account</h2>
-        <form action="=.php" method="POST">
+        <form action="signup2.php" method="POST">
             <!-- Username -->
             <div class="form-group">
                 <label for="username">Username</label>
