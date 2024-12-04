@@ -38,6 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               VALUES ('$username', '$email', '$phone', '$password', '$firstName', '$lastName', '$gender', '$pronouns', '$dob', '$nationality', '$location', '$languages', '$bio')";
     
     if (!$mysql->query($userQuery)) {
+        //Asia's update based on meeting with dent
+        var_dump($_REQUEST);
+        echo "<br>".$userQuery."<br>";
+        //Asia update <end>
         die("Error creating account: " . $mysql->error);
     }
 
