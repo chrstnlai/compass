@@ -23,18 +23,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $mysql->real_escape_string(string: $_POST['email']);
     $phone = $mysql->real_escape_string($_POST['phone']);
     $password = $mysql->real_escape_string($_POST['password']);
-    $firstName = $mysql->real_escape_string($_POST['first_name']);
-    $lastName = $mysql->real_escape_string($_POST['last_name']);
+    $firstName = $mysql->real_escape_string($_POST['firstName']);
+    $lastName = $mysql->real_escape_string($_POST['lastName']);
     $gender = $mysql->real_escape_string($_POST['gender']);
     $pronouns = $mysql->real_escape_string($_POST['pronouns']);
-    $dob = trim($_POST['dob']);
+    $dob = date($_POST['dob']);
     $nationality = $mysql->real_escape_string($_POST['nationality']);
     $location = $mysql->real_escape_string($_POST['location']);
+    $languages = $mysql->real_escape_string($_POST['languages']);
     $bio = $mysql->real_escape_string($_POST['bio']);
 
 
-    $userQuery = "INSERT INTO Users (username, email, phoneNumber, password, firstName, lastName, gender, pronouns, DOB, nationality, location, languages, bio) 
-              VALUES ('$username', '$email', '$phoneNumber', '$password', '$firstName', '$lastName', '$gender', '$pronouns', '$DOB', '$nationality', '$location', '$languages', '$bio')";
+    $userQuery = "INSERT INTO Users (username, email, phoneNumber, pw, firstName, lastName, gender, pronouns, DOB, nationality, loc, languages, bio) 
+              VALUES ('$username', '$email', '$phone', '$password', '$firstName', '$lastName', '$gender', '$pronouns', '$dob', '$nationality', '$location', '$languages', '$bio')";
     
     if (!$mysql->query($userQuery)) {
         die("Error creating account: " . $mysql->error);
