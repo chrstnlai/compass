@@ -50,7 +50,7 @@ if($mysql->connect_errno) {
         </div>
     </div>
     <div class=" title">
-        <marquee scrollamount="20" loop="2">WHERE ARE YOU TRAVELING?</marquee>
+        <marquee scrollamount="20" loop="10">WHERE ARE YOU TRAVELING?</marquee>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
@@ -375,7 +375,8 @@ if($mysql->connect_errno) {
 
     .search-icon {
         width: 30px; 
-        height: 30px; 
+        height: 30px;
+        margin-top: 10px;
     }
 
     .login-icon {
