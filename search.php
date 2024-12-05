@@ -45,7 +45,7 @@ if($mysql->connect_errno) {
         </form>
     </div>
 </nav>
-
+    
 <main>
     <section>
         <div class="explore">

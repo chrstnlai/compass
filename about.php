@@ -52,9 +52,8 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                 Compass provides solo travelers with an exceptional, immersive, and memorable experience in your travel destination. Hosts not only provide a comfortable space to sleep within close proximity of your city of choice but also act as your <strong>local tour guide</strong> and cultural insider.
             </div>
 
-            <div class="containermini">
-                <h2>Features</h2>
                 <br>
+            <h2 class="section">
                 <div class="cardmini">Connecting people</div>
                 <div class ="cardmini-set.back">| Compass is an online social network and marketplace that connects people looking for accommodations with people who want to rent out their property and share their culture
                 </div>
@@ -64,7 +63,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                     Booking details | Users can book accommodations, including the date, check-in time, and other details.</div>
                 <div class ="cardmini">
                     Ratings and reviews | Users can share their experiences through ratings and reviews.</div>
-
+            </h2>
             </div>
 
 
