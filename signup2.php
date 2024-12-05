@@ -33,9 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $languages = $mysql->real_escape_string($_POST['languages']);
     $bio = $mysql->real_escape_string($_POST['bio']);
 
+    // Disable foreign key checks
+    $mysql->query("SET FOREIGN_KEY_CHECKS = 0");
 
-    $userQuery = "INSERT INTO Users (username, email, phoneNumber, pw, firstName, lastName, gender, pronouns, DOB, nationality, loc, languages, bio) 
-              VALUES ('$username', '$email', '$phone', '$password', '$firstName', '$lastName', '$gender', '$pronouns', '$dob', '$nationality', '$location', '$languages', '$bio')";
+    $userQuery = "
+            INSERT INTO Users (username, email, phoneNumber, pw, firstName, lastName, gender, pronouns, DOB, nationality, loc, languages, bio) 
+            VALUES ('$username', '$email', '$phone', '$password', '$firstName', '$lastName', '$gender', '$pronouns', '$dob', '$nationality', '$location', '$languages', '$bio'); 
+    ";
     
     if (!$mysql->query($userQuery)) {
         //Asia's update based on meeting with dent
@@ -44,6 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Asia update <end>
         die("Error creating account: " . $mysql->error);
     }
+
+    // Re-enable foreign key checks
+    $mysql->query("SET FOREIGN_KEY_CHECKS = 1");
 
     echo "Account Created!";
 
