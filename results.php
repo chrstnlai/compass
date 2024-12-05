@@ -104,7 +104,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
                     if ($userInfoRow = $userInfoResult->fetch_assoc()) {
                         echo '<div class="listing-card">
-<<<<<<< HEAD
                             <div class="listing-header">
                                 <div class="profile-section">
                                 <div class="host-info">
@@ -124,29 +123,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                         </div>
                         <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
                     </div>';
-=======
-    <div class="listing-header">
-        <div class="profile-section">
-            <div class="host-info">
-                <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
-                <!-- Replace the static Hollywood address with the dynamic one from the database -->
-                <p class="host-location">' . htmlspecialchars($location['address']) . ', ' . htmlspecialchars($location['city']) . ', ' . htmlspecialchars($location['country']) . '</p>
-                <div class="host-rating">
-                    <span class="star-icon">★</span>
-                    <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
-                </div>
-                <div class="profile-image-container">
-                    <img src="placeholder.jpg" alt="Host profile" class="profile-image">
-                    <div class="verified-badge">✓</div>
-                </div>
-            </div>
-        </div>
-        <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
-    </div>
-    <img src="placeholder.jpg" alt="Property image" class="property-image">
-</div>';
-
->>>>>>> 8be477a6884460d9178baadb2686693d7df96533
                     }
                 }
             }
