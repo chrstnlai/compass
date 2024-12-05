@@ -15,10 +15,10 @@
                 </div>
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Log in</a></li>
-                        <li><a href="#">Referral</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="signup.php">Sign up</a></li>
+                        <li><a href="signin.php">Log in</a></li>
+                        <li><a href="referral.php">Referral</a></li>
+                        <li><a href="team.php">Contact</a></li>
                     </ul>
                 </div>
             </div>
