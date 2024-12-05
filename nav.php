@@ -15,10 +15,10 @@
                 </div>
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="signup.php">Sign up</a></li>
-                        <li><a href="signin.php">Log in</a></li>
-                        <li><a href="referral.php">Referral</a></li>
-                        <li><a href="team.php">Contact</a></li>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="#">Log in</a></li>
+                        <li><a href="#">Referral</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,7 +30,7 @@
     nav {
         background-color: #1B5299;
         margin: 0;
-        padding: 0 0 50px 0;
+        padding: 0 0 0px 0;
     }
     .navbar {
         display: flex;
@@ -38,7 +38,7 @@
         align-items: center;
         background-color: #1B5299;
         color: #3b1b06;
-        padding: 25px 93.26px 20px 93.26px;
+        padding: 0px 93.26px 0px 93.26px;
     }
 
     .navbar .logo {
@@ -152,4 +152,3 @@
         width: 75px;
     }
 </style>
-

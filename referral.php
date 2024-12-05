@@ -7,15 +7,7 @@
 
 </head>
 <body>
-<nav>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage">
-            <h2>COMPASS</h2>
-        </div>
-        <img src="images/Login.png" alt="login" class="login-icon">
-    </div>
-</nav>
+<?php include 'nav.php'; ?>
 <main>
     <div class="card">
         <div class="image-container">

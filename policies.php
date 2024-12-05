@@ -30,13 +30,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">
-        <img src="compass/images/compasslogo_db-04 1.png" alt="logoimage">
-        <h2>COMPASS</h2>
-    </div>
-    <img src="images/Group 23.png" alt="login">
-</div>
+<?php include 'nav.php'; ?>
 <nav>
     <div class=" title">
         Safety Policies
@@ -225,7 +219,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     nav {
         background-color: #1B5299;
         margin: 0;
-        padding: 0 0 100px 100px;
     }
     .navbar {
         display: flex;
@@ -233,7 +226,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         align-items: center;
         background-color: white;
         color: #3b1b06;
-        padding: 25px 93.26px 45.63px 93.26px;
+        padding: 0px 93.26px 0px 93.26px;
     }
 
     .navbar .logo {

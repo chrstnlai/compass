@@ -30,13 +30,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">
-        <img src="compass/images/compasslogo_db-04 1.png" alt="logoimage">
-        <h2>COMPASS</h2>
-    </div>
-    <img src="images/Group 23.png" alt="login">
-</div>
+<?php include 'nav.php'; ?>
 <nav>
     <div class=" title">
         About Us
@@ -55,21 +49,21 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
             <div class="section">
                 <h2 style="text-align: center">Our Mission</h2>
                 <br>
-                    Compass provides solo travelers with an exceptional, immersive, and memorable experience in your travel destination. Hosts not only provide a comfortable space to sleep within close proximity of your city of choice but also act as your <strong>local tour guide</strong> and cultural insider.
+                Compass provides solo travelers with an exceptional, immersive, and memorable experience in your travel destination. Hosts not only provide a comfortable space to sleep within close proximity of your city of choice but also act as your <strong>local tour guide</strong> and cultural insider.
             </div>
 
             <div class="containermini">
                 <h2>Features</h2>
                 <br>
                 <div class="cardmini">Connecting people</div>
-                    <div class ="cardmini-set.back">| Compass is an online social network and marketplace that connects people looking for accommodations with people who want to rent out their property and share their culture
+                <div class ="cardmini-set.back">| Compass is an online social network and marketplace that connects people looking for accommodations with people who want to rent out their property and share their culture
                 </div>
                 <div class ="cardmini">
                     Filters | Compass offers many filters to help users find properties that meet their needs, such as pet-friendly, longer than a month, or with a pool</div>
                 <div class ="cardmini">
-                Booking details | Users can book accommodations, including the date, check-in time, and other details.</div>
+                    Booking details | Users can book accommodations, including the date, check-in time, and other details.</div>
                 <div class ="cardmini">
-                Ratings and reviews | Users can share their experiences through ratings and reviews.</div>
+                    Ratings and reviews | Users can share their experiences through ratings and reviews.</div>
 
             </div>
 
@@ -184,18 +178,14 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         transition: 1s;
     }
 
-    nav {
-        background-color: #1B5299;
-        margin: 0;
-        padding: 0 0 100px 100px;
-    }
+
     .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: white;
         color: #3b1b06;
-        padding: 25px 93.26px 45.63px 93.26px;
+        padding: 0px 93.26px 0px 93.26px;
     }
 
     .navbar .logo {
