@@ -18,7 +18,7 @@ if($mysql->connect_errno) {
 
 ?>
 
-
+<html>
 <head>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -26,31 +26,10 @@ if($mysql->connect_errno) {
 
 </head>
 <body>
+
+<?php include 'nav.php'; ?>
+
 <nav>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
-            <h2>COMPASS</h2>
-        </div>
-        <div class="aboutus">
-            <a href="about.php">About Us</a>
-        </div>
-        <div class="menu">
-            <div class="menu-toggle">
-                <div class="profile-icon">
-                    <img src="images/Login.png" alt="login" class="login-icon">
-                </div>
-                <div class="dropdown-menu">
-                    <ul>
-                        <li><a href="signup.php">Sign up</a></li>
-                        <li><a href="signin.php">Log in</a></li>
-                        <li><a href="#">Referral</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class=" title">
         <marquee scrollamount="20" loop="2">WHERE ARE YOU TRAVELING?</marquee>
         <h2> For solo travelers that want a personal experience. </h2>
@@ -66,6 +45,7 @@ if($mysql->connect_errno) {
         </form>
     </div>
 </nav>
+
 <main>
     <section>
         <div class="explore">
@@ -232,33 +212,11 @@ if($mysql->connect_errno) {
         padding: 0 0 50px 0;
     }
 
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #1B5299;
-        color: #3b1b06;
-        padding: 25px 93.26px 20px 93.26px;
-    }
-
-    .navbar .logo {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    .navbar .logo img {
-        width: 72px;
-        height: 72px;
-    }
 
     nav .title {
         text-align: center;
     }
 
-    .navbar .aboutus {
-        margin-left: auto;
-        padding-right: 35px;
-    }
     .search-input {
         width: 150px;
         height: 30px;
@@ -273,62 +231,6 @@ if($mysql->connect_errno) {
 
     .search-input::placeholder {
         color: white;
-    }
-
-    .menu {
-        position: relative;
-        cursor: pointer;
-    }
-
-    .menu-toggle {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .profile-icon {
-        font-size: 24px;
-    }
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 40px;
-        right: 0;
-        background: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        width: 200px;
-    }
-
-    .dropdown-menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .dropdown-menu ul li {
-        padding: 10px 20px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .dropdown-menu ul li:last-child {
-        border-bottom: none;
-    }
-
-    .dropdown-menu ul li a {
-        text-decoration: none;
-        color: #333;
-        font-size: 14px;
-    }
-
-    .dropdown-menu ul li a:hover {
-        color: #007bff;
-    }
-
-    .menu:hover .dropdown-menu {
-        display: block;
     }
 
 
@@ -382,10 +284,6 @@ if($mysql->connect_errno) {
     .search-icon {
         width: 30px;
         height: 30px;
-    }
-
-    .login-icon {
-        width: 75px;
     }
 
     .explore h1 {
