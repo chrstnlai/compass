@@ -20,10 +20,10 @@ if($mysql->connect_errno) {
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
@@ -301,7 +301,7 @@ if($mysql->connect_errno) {
         position: relative;
         overflow: hidden;
         border-radius: 10px;
-        width: 407.131px;
+        width:auto;
         height:242.173px;
     }
 
@@ -313,7 +313,6 @@ if($mysql->connect_errno) {
         opacity: 80%;
 
     }
-
 
     .card .overlay {
         position: absolute;
@@ -335,6 +334,15 @@ if($mysql->connect_errno) {
     .card:hover .overlay {
         opacity: 1;
     }
+
+    .featured {
+        width: auto;
+    }
+
+    .recent {
+        width: auto;
+    }
+
     .featured-grid {
         display: flex;
         gap: 10px;
@@ -382,6 +390,11 @@ if($mysql->connect_errno) {
         padding: 5px;
         border-radius:10px;
     }
+
+    .reviews {
+        width: 100%;
+    }
+
     .review-grid {
         display:flex;
         margin: 10px 93.26px;
@@ -391,7 +404,6 @@ if($mysql->connect_errno) {
     .review-card {
         width: 329.916px;
         height: 204.568px;
-        flex-shrink: 0;
         border-radius: 13.538px;
         border: 0.501px solid #000;
         background-color: #fff;
@@ -423,4 +435,8 @@ if($mysql->connect_errno) {
         line-height: 1.4;
     }
 
+
+
+
+    }
 </style>
