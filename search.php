@@ -184,6 +184,10 @@ if($mysql->connect_errno) {
     </div>
     </div>
 </main>
+<footer>
+    <p>&copy; 2024 Compass. All rights reserved.</p>
+    <a href="admin/adminlanding.php"> Admin Page</a>
+</footer>
 </body>
 </html>
 
@@ -346,7 +350,6 @@ if($mysql->connect_errno) {
     .featured-grid {
         display: flex;
         gap: 10px;
-        overflow-x: auto;
         padding: 10px 93.26px 0px 93.26px;
         white-space: nowrap;
     }
@@ -435,6 +438,73 @@ if($mysql->connect_errno) {
         line-height: 1.4;
     }
 
+    footer {
+        padding-left: 100px;
+        margin-bottom: 30px;
+
+    }
+
+    @media (max-width: 768px) {
+
+        .review-text {
+            font-size: 55%;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        h1{
+            padding: 30px;
+        }
+
+
+        nav h1 {
+            font-size: 32px;
+            margin-top: 20px;
+        }
+
+
+        .grid {
+            padding: 0 30px;
+        }
+
+        .featured-grid {
+            padding: 0 30px;
+            overflow-x: auto;
+        }
+
+
+        .featured-card {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .profile-image-container {
+            left: 75px;
+        }
+
+        h3 {
+            left: 25px;
+        }
+        .review-grid {
+            margin: 0 30px;
+        }
+
+        .card .overlay {
+            text-align: center;
+        }
+
+        .card {
+            height:150px;
+        }
+
+        footer {
+            text-align: center;
+            padding-left: 0px;
+        }
+
+    }
 
 
 
