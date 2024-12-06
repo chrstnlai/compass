@@ -2,8 +2,10 @@
 <nav>
     <div class="navbar">
         <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
-            <h2>COMPASS</h2>
+            <a href="search.php" style="text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
+                <h2>COMPASS</h2>
+            </a>
         </div>
         <div class="aboutus">
             <a href="about.php">About Us</a>
