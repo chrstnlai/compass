@@ -26,12 +26,12 @@ while ($row = $results->fetch_assoc()) {
     echo "<td>" . $row['status'] . "</td>";
     echo "<td>" . $row['createdAt'] . "</td>";
 
-    echo "<td>" . "<a href='reporteditdata.php?id="
+    echo "<td>" . "<a href='userseditdata.php?id="
         . $row["reportID"] . "'>"
         . 'Click to edit'
         . "</a></strong>" . "</td>";
 
-    echo "<td>" . "<a href='reportdeletedata.php?id="
+    echo "<td>" . "<a href='usersdeletedata.php?id="
         . $row["reportID"] . "'>"
         . 'Click to delete'
         . "</a></strong>" . "</td>";

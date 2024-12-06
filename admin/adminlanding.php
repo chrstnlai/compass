@@ -42,14 +42,22 @@ if($mysql->connect_errno) {
     <div id="container">
         <div id="users">
             <h2>Users</h2>
-            <button>Add</button>
-            <button>Edit/Delete</button>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/users/usersadd.php" style="text-decoration: none;">
+                <button>Add</button>
+            </a>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/users/userseditdelete.php" style="text-decoration: none;">
+                <button>Edit/Delete</button>
+            </a>
         </div>
 
         <div id="locations">
             <h2>Locations</h2>
-            <button>Add</button>
-            <button>Edit/Delete</button>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/locations/locationadd.php" style="text-decoration: none;">
+                <button>Add</button>
+            </a>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/locations/locationeditdelete.php" style="text-decoration: none;">
+                <button>Edit/Delete</button>
+            </a>
         </div>
 
         <div id="documents">
