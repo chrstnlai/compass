@@ -33,7 +33,6 @@
         </div>
     </div>
 </nav>
-
 </html>
 <style>
     nav {
@@ -133,6 +132,12 @@
     }
 
 
+    h1 {
+        font-size:25px;
+        padding: 0px 93.26px;
+        margin-top: 44px;
+    }
+
     .navbar h2 {
         color: white;
         font-family: Inter;
@@ -154,12 +159,5 @@
 
     .login-icon {
         width: 75px;
-    }
-
-
-    @media (max-width: 768px) {
-        .navbar {
-            padding: 10px;
-        }
     }
 </style>

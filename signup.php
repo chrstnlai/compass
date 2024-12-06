@@ -346,6 +346,12 @@ if ($mysql->connect_errno) {
             color: #333;
             line-height: 1.4;
         }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding:40px;
+            }
+        }
     </style>
 </head>
 <body>

@@ -4,7 +4,6 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <?php include 'nav.php'; ?>
@@ -188,11 +187,12 @@
         flex-direction: row;
         margin: 0 auto;
         margin-top: 30px;
+        flex-wrap: wrap;
     }
 
     .image-container {
         position: relative;
-        flex: 1;
+        flex: 1 1 300px;
     }
 
     .image-container img {
@@ -309,7 +309,7 @@
 
     .calendar {
         flex: 1;
-        padding: 20px;
+        margin: 20px;
         background-color: #fff;
     }
 
@@ -348,27 +348,33 @@
     }
 
     .itinerary {
-        padding: 20px;
         max-width: 1000px;
         margin: 20px auto;
         background-color: #fff;
+        margin-bottom: 10px;
     }
 
     h1 {
         font-size:25px;
-        padding: 0px 216px;
+        max-width: 1000px;
+        margin: 0 auto;
         margin-top: 44px;
+        margin-bottom: 10px;
     }
+
     .review-grid {
         display:flex;
-        margin: 10px 210px;
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
         margin-bottom: 50px;
         gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .review-card {
         width: 329.916px;
         height: 204.568px;
-        flex-shrink: 0;
+        flex-shrink: 1;
         border-radius: 13.538px;
         border: 0.501px solid #000;
         background-color: #fff;
@@ -397,6 +403,42 @@
         font-style: italic;
         color: #333;
         line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+        .card {
+            flex-direction: column; /* Stack elements */
+            padding: 30px;
+        }
+
+        .info {
+            padding: 15px;
+        }
+
+        .container {
+            flex-direction: column; /* Stack sections vertically */
+            align-items: center;
+        }
+
+        .review-text {
+            font-size: 60%;
+        }
+
+        .calendar {
+            margin: 0 auto;
+        }
+
+        .review-card {
+            padding: 10px;
+        }
+
+        .itinerary {
+            padding: 30px;
+        }
+
+        .reviews {
+            padding: 30px;
+            width: 90%;
+        }
     }
 
 </style>

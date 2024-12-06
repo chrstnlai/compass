@@ -186,4 +186,38 @@
         background-color: #5675a8;
     }
 
+    @media (max-width: 768px) {
+        .card {
+            flex-direction: column;
+            height: auto;
+            padding: 30px;
+        }
+
+        .card img {
+            height: 200px;
+        }
+
+        .info {
+            padding: 15px;
+        }
+
+        #text {
+            font-size: 20px;
+            padding-top: 10px;
+        }
+
+        .info .location {
+            font-size: 14px;
+        }
+
+        .button-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .button-container button {
+            width: 100%;
+        }
+    }
+
 </style>

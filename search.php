@@ -27,11 +27,11 @@ if($mysql->connect_errno) {
 </head>
 <body>
 
-<?php include 'nav.php'; ?>
 
 <nav>
+    <?php include 'nav.php'; ?>
     <div class=" title">
-        <marquee scrollamount="20" loop="2">WHERE ARE YOU TRAVELING?</marquee>
+        <h1>Where are you traveling?</h1>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
@@ -45,7 +45,7 @@ if($mysql->connect_errno) {
         </form>
     </div>
 </nav>
-    
+
 <main>
     <section>
         <div class="explore">
@@ -184,6 +184,10 @@ if($mysql->connect_errno) {
     </div>
     </div>
 </main>
+<footer>
+    <p>&copy; 2024 Compass. All rights reserved.</p>
+    <a href="admin/adminlanding.php"> Admin Page</a>
+</footer>
 </body>
 </html>
 
@@ -195,17 +199,6 @@ if($mysql->connect_errno) {
         padding: 0;
     }
 
-    marquee {
-        font-size: 72.702px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        color:white;
-        font-family: "Krona One";
-        margin-bottom: 20px;
-        margin-top: 110px;
-    }
-
     nav {
         background-color: #1B5299;
         margin: 0;
@@ -214,6 +207,17 @@ if($mysql->connect_errno) {
 
     nav .title {
         text-align: center;
+    }
+
+    nav h1 {
+        font-size: 65px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color:white;
+        font-family: "Krona One";
+        margin-bottom: 50px;
+        margin-top: 70px;
     }
 
     .search-input {
@@ -345,7 +349,6 @@ if($mysql->connect_errno) {
     .featured-grid {
         display: flex;
         gap: 10px;
-        overflow-x: auto;
         padding: 10px 93.26px 0px 93.26px;
         white-space: nowrap;
     }
@@ -434,6 +437,73 @@ if($mysql->connect_errno) {
         line-height: 1.4;
     }
 
+    footer {
+        padding-left: 100px;
+        margin-bottom: 30px;
+
+    }
+
+    @media (max-width: 768px) {
+
+        .review-text {
+            font-size: 55%;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        h1{
+            padding: 30px;
+        }
+
+
+        nav h1 {
+            font-size: 32px;
+            margin-top: 20px;
+        }
+
+
+        .grid {
+            padding: 0 30px;
+        }
+
+        .featured-grid {
+            padding: 0 30px;
+            overflow-x: auto;
+        }
+
+
+        .featured-card {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .profile-image-container {
+            left: 75px;
+        }
+
+        h3 {
+            left: 25px;
+        }
+        .review-grid {
+            margin: 0 30px;
+        }
+
+        .card .overlay {
+            text-align: center;
+        }
+
+        .card {
+            height:150px;
+        }
+
+        footer {
+            text-align: center;
+            padding-left: 0px;
+        }
+
+    }
 
 
 
