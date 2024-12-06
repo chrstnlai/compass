@@ -27,11 +27,11 @@ if($mysql->connect_errno) {
 </head>
 <body>
 
-<?php include 'nav.php'; ?>
 
 <nav>
+    <?php include 'nav.php'; ?>
     <div class=" title">
-        <marquee scrollamount="20" loop="2">WHERE ARE YOU TRAVELING?</marquee>
+        <h1>Where are you traveling?</h1>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
@@ -45,7 +45,7 @@ if($mysql->connect_errno) {
         </form>
     </div>
 </nav>
-    
+
 <main>
     <section>
         <div class="explore">
@@ -195,17 +195,6 @@ if($mysql->connect_errno) {
         padding: 0;
     }
 
-    marquee {
-        font-size: 72.702px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        color:white;
-        font-family: "Krona One";
-        margin-bottom: 20px;
-        margin-top: 110px;
-    }
-
     nav {
         background-color: #1B5299;
         margin: 0;
@@ -215,6 +204,17 @@ if($mysql->connect_errno) {
 
     nav .title {
         text-align: center;
+    }
+
+    nav h1 {
+        font-size: 65px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color:white;
+        font-family: "Krona One";
+        margin-bottom: 50px;
+        margin-top: 70px;
     }
 
     .search-input {
