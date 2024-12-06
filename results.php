@@ -8,6 +8,8 @@ $databaseName = "anikets_compass";
 // Create a new MySQLi instance and establish a connection
 $connection = new mysqli($serverName, $username, $password, $databaseName);
 
+$connection->set_charset("utf8");
+
 // Check for a connection error
 if ($connection->connect_errno) {
     echo "Database connection error: " . $connection->connect_error;
@@ -29,7 +31,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet">
-
+    <meta name="viewport" charset = "UTF-8" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <?php include 'nav.php'; ?>
@@ -113,7 +115,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                                     </div>
                                 </div>
                             </div>
-                            <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
+                            <p class="host-description">' . htmlspecialchars($userInfoRow['bio'], ENT_COMPAT, 'UTF-8') . '</p>
                         </div>
                         <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
                     </div>';
