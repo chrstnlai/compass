@@ -15,6 +15,7 @@ if ($connection->connect_errno) {
 }
 
 // Get search parameters from request, with fallback to empty strings if not provided
+// HIIIIIIIII
 $searchDestination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '';
 $searchCheckinDate = isset($_REQUEST['checkin']) ? $_REQUEST['checkin'] : '';
 $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
