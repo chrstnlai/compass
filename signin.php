@@ -347,13 +347,8 @@ if ($mysql->connect_errno) {
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage">
-            <h2>COMPASS</h2>
-        </div>
-        <img src="images/Login.png" alt="login" class="login-icon">
-    </div>
+
+<?php include 'nav.php'; ?>
 
     <div class="main-container">
         <h2>Sign In</h2>
