@@ -41,71 +41,48 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 <main>
     <div class = resultnumber>
         <br><br>
-        <div class="container">
-
-            <div class="section">
-                <h2 style="text-align: center">Our Mission</h2>
-                <br>
-                Compass provides solo travelers with an exceptional, immersive, and memorable experience in your travel destination. Hosts not only provide a comfortable space to sleep within close proximity of your city of choice but also act as your <strong>local tour guide</strong> and cultural insider.
-            </div>
-
-            <div class="flip-card" name="christine">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="images" alt="Front Image">
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="images/team/compassteam1.jpg" alt="Back Image">
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card" name="carter">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="images/team/carter.jpg" alt="Front Image">
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="images/team/compassteam2.jpg" alt="Back Image">
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card" name="senah">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="images" alt="Front Image">
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="images/team/compassteam3.jpg" alt="Back Image">
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card" name="asia">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="images" alt="Front Image">
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="images/team/compassteam4.jpg" alt="Back Image">
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card" name="aniket">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="images" alt="Front Image">
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="images\la.png" alt="Back Image">
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        </div>
     </div>
 </main>
+<div class="team-section">
+    <h1>Meet the COMPASS Team</h1>
+    <div class="team-grid">
+        <div class="team-member">
+            <img src="images/team/chang.jpg" alt="Asia Chang">
+            <h3>Asia Chang</h3>
+            <p>Product Manager</p>
+            <br>
+            <p>Has driven too many miles, and dreams about flying miles.</p>
+        </div>
+        <div class="team-member">
+            <img src="images/team/compassteam1.jpg" alt="Christine Lai">
+            <h3>Christine Lai</h3>
+            <p>Front and Backend Developer</p>
+            <br>
+            <p>Catches up on her sleep during her travels.</p>
+        </div>
+        <div class="team-member">
+            <img src="images/team/compassteam2.jpg" alt="Carter Kawaguchi">
+            <h3>Carter Kawaguchi</h3>
+            <p>Full Stack Developer</p>
+            <br>
+            <p>Multilingual king by day, full stack developer and travel agent by night.</p>
+        </div>
+        <div class="team-member">
+            <img src="images/team/compassteam3.jpg" alt="Senah Kim">
+            <h3>Senah Kim</h3>
+            <p>UI/UX Designer</p>
+            <br>
+            <p>Finds comfort in traveling, almost as if it was her hoodie.</p>
+        </div>
+        <div class="team-member">
+            <img src="images/team/singh.jpg" alt="Aniket Singh">
+            <h3>Aniket Singh</h3>
+            <p>Backend Developer</p>
+            <br>
+            <p>Spiderman??? No. Loves climbing walls as much as he loves traveling.</p>
+        </div>
+    </div>
+</div>
 
 <footer>
     <p>&copy; 2024 Compass. All rights reserved.</p>
@@ -116,9 +93,53 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 <style>
     body {
-        font-family: lato;
+        font-family: Lato;
         margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
     }
+    .team-section {
+        text-align: center;
+        padding: 20px 20px;
+    }
+    .team-section h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: #222;
+    }
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 100px;
+        margin: 0 auto;
+        max-width: 2200px;
+        padding: 0 20px;
+    }
+    .team-member {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        padding: 20px;
+    }
+    .team-member img {
+        width: 150px;
+        height: 170px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+    .team-member h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+        color: #444;
+    }
+    .team-member p {
+        font-size: 16px;
+        color: #777;
+    }
+
 
     .title {
         font-size: 72.702px;

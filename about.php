@@ -162,6 +162,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         height: 200px; /* Fixed height */
         display: flex;
         align-items: center;
+        float: right;
         justify-content: center;
     }
     .cardmini-set.back{
