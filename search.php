@@ -20,7 +20,7 @@ if($mysql->connect_errno) {
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" charset = "UTF-8" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -184,6 +184,10 @@ if($mysql->connect_errno) {
     </div>
     </div>
 </main>
+<footer>
+    <p>&copy; 2024 Compass. All rights reserved.</p>
+    <a href="admin/adminlanding.php"> Admin Page</a>
+</footer>
 </body>
 </html>
 
@@ -200,7 +204,6 @@ if($mysql->connect_errno) {
         margin: 0;
         padding: 0 0 50px 0;
     }
-
 
     nav .title {
         text-align: center;
@@ -346,7 +349,6 @@ if($mysql->connect_errno) {
     .featured-grid {
         display: flex;
         gap: 10px;
-        overflow-x: auto;
         padding: 10px 93.26px 0px 93.26px;
         white-space: nowrap;
     }
@@ -435,6 +437,73 @@ if($mysql->connect_errno) {
         line-height: 1.4;
     }
 
+    footer {
+        padding-left: 100px;
+        margin-bottom: 30px;
+
+    }
+
+    @media (max-width: 768px) {
+
+        .review-text {
+            font-size: 55%;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        h1{
+            padding: 30px;
+        }
+
+
+        nav h1 {
+            font-size: 32px;
+            margin-top: 20px;
+        }
+
+
+        .grid {
+            padding: 0 30px;
+        }
+
+        .featured-grid {
+            padding: 0 30px;
+            overflow-x: auto;
+        }
+
+
+        .featured-card {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .profile-image-container {
+            left: 75px;
+        }
+
+        h3 {
+            left: 25px;
+        }
+        .review-grid {
+            margin: 0 30px;
+        }
+
+        .card .overlay {
+            text-align: center;
+        }
+
+        .card {
+            height:150px;
+        }
+
+        footer {
+            text-align: center;
+            padding-left: 0px;
+        }
+
+    }
 
 
 
