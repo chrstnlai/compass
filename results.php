@@ -67,9 +67,10 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         <div class="container">
             <?php
             // Query to fetch listings based on the destination and optional date range
-            $query = "SELECT * FROM Locations WHERE country LIKE '%$searchDestination%' 
-            OR city LIKE '%$searchDestination%' 
-            OR address LIKE '%$searchDestination%'";
+            $query = "SELECT locationID, locationimage FROM Locations 
+          WHERE country LIKE '%$searchDestination%' 
+          OR city LIKE '%$searchDestination%' 
+          OR address LIKE '%$searchDestination%'";
 
             //            if ($searchCheckinDate && $searchCheckoutDate) {
             //                $query .= " AND checkin >= '$searchCheckinDate' AND checkout <= '$searchCheckoutDate'";
@@ -99,6 +100,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
                     if ($userInfoRow = $userInfoResult->fetch_assoc()) {
                         echo '<div class="listing-card">
+
                             <div class="listing-header">
                                 <div class="profile-section">
                                 <div class="host-info">
@@ -116,7 +118,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                             </div>
                             <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
                         </div>
-                        <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
+                        <img src="' . htmlspecialchars($location["locationimage"]) . '" alt="Property image" class="property-image">
                     </div>';
                     }
                 }
@@ -355,7 +357,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     }
 
     body {
-        background-color: #f5f5f5;
+        background-color: #ffffff;
         padding: 20px;
     }
 

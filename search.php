@@ -31,7 +31,7 @@ if($mysql->connect_errno) {
 <nav>
     <?php include 'nav.php'; ?>
     <div class=" title">
-        <h1>Where are you traveling?</h1>
+ <h1>Where are you traveling?</h1>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
@@ -289,6 +289,7 @@ if($mysql->connect_errno) {
         width: 30px;
         height: 30px;
     }
+
 
     .explore h1 {
         margin-top: 44px;
