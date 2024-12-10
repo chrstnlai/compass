@@ -1,13 +1,102 @@
+<?php
+$host = "webdev.iyaserver.com";
+$userid = "anikets";
+$userpw = "AcadDev_Singh_6362298333";
+$db = "anikets_compass";
+
+$mysql = new mysqli(
+    $host,
+    $userid,
+    $userpw,
+    $db
+);
+
+if($mysql->connect_errno) {
+    echo "db connection error : " . $mysql->connect_error;
+    exit();
+}
+
+?>
+
 
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const calendarBody = document.querySelector('.calendar-body');
+        const monthYear = document.querySelector('.month-year');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        let currentDate = new Date();
+
+        function renderCalendar(date) {
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            // Update the month and year in the header
+            const monthNames = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            monthYear.textContent = `${monthNames[month]} ${year}`;
+
+            // Clear previous calendar
+            calendarBody.innerHTML = '';
+
+            // Get first and last day of the current month
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+
+            let day = 1;
+            for (let i = 0; i < 6; i++) { // 6 rows (weeks)
+                const row = document.createElement('tr');
+                for (let j = 0; j < 7; j++) { // 7 columns (days)
+                    const cell = document.createElement('td');
+                    if (i === 0 && j < firstDay || day > lastDate) {
+                        cell.classList.add('inactive');
+                        cell.textContent = '';
+                    } else {
+                        cell.textContent = day;
+                        cell.classList.add('active');
+                        cell.addEventListener('click', () => {
+                            alert(`You selected ${monthNames[month]} ${day}, ${year}`);
+                        });
+                        day++;
+                    }
+                    row.appendChild(cell);
+                }
+                calendarBody.appendChild(row);
+            }
+        }
+
+        // Navigation buttons
+        prevButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar(currentDate);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar(currentDate);
+        });
+
+        // Initial render
+        renderCalendar(currentDate);
+    });
+
+
+</script>
+
 </head>
 <body>
 <?php include 'nav.php'; ?>
 <main>
+
     <div class="card">
         <div class="image-container">
             <img src="placeholder.png" alt="Guest House Living Room">
@@ -31,7 +120,8 @@
                 </div>
                 <div class="details">
                     <h2>Sarah Wood</h2>
-                    <p><span class="rating">⭐ 4.98</span> (124)</p>
+                    <p><span class="rating">
+                            ⭐ 4.98</span> (124)</p>
                     <blockquote>
                         “I love hosting guests and showing them around LA! There’s so much more than the Hollywood sign and the beach.”
                     </blockquote>
@@ -48,32 +138,22 @@
         </div>
         <div class="calendar">
             <div class="month-header">
-                <span>&lt;</span>
-                <h3>December 2024</h3>
-                <span>&gt;</span>
+                <span class="prev">&lt;</span>
+                <h3 class="month-year"></h3>
+                <span class="next">&gt;</span>
             </div>
             <table>
+                <thead>
                 <tr>
                     <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
                 </tr>
-                <tr>
-                    <td class="inactive">1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-                    <td class="highlight">6</td><td>7</td>
-                </tr>
-                <tr>
-                    <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-                </tr>
-                <tr>
-                    <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
-                </tr>
-                <tr>
-                    <td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
-                </tr>
-                <tr>
-                    <td>29</td><td>30</td><td class="inactive">31</td>
-                </tr>
+                </thead>
+                <tbody class="calendar-body">
+                <!-- Days will be dynamically generated -->
+                </tbody>
             </table>
         </div>
+
     </div>
     <div class="itinerary">
         <h3>Itinerary:</h3>
