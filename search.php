@@ -51,30 +51,42 @@ if($mysql->connect_errno) {
         <div class="explore">
             <h1>Explore Regions</h1>
             <div class="grid">
+                <a href="asia.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/asia.jpg" alt="Asia">
                     <div class="overlay">Asia</div>
                 </div>
+                </a>
+                <a href="europe.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/europe.jpg" alt="Europe">
                     <div class="overlay">Europe</div>
                 </div>
+                </a>
+                <a href="southafrica.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/southafricajpg.jpg" alt="South Africa">
                     <div class="overlay">South Africa</div>
                 </div>
+                </a>
+                <a href="australia.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/australia.jpg" alt="Australia">
                     <div class="overlay">Australia</div>
                 </div>
+                </a>
+                <a href="northamerica.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/northamerica.png" alt="North America">
                     <div class="overlay">North America</div>
                 </div>
+                </a>
+                <a href="southamerica.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/southamerica.jpg" alt="South America">
                     <div class="overlay">South America</div>
                 </div>
+                </a>
             </div>
         </div>
     </section>

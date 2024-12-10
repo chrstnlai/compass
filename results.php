@@ -27,9 +27,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-          rel="stylesheet">
-
 </head>
 <body>
 <?php include 'nav.php'; ?>
@@ -39,26 +36,13 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     </div>
     <div class="search">
         <form action="results.php">
-            <input type="text" name="destination" placeholder="Where?">
-            <input type="date" name="checkin" placeholder="Check In:">
-            <input type="date" name="checkout" placeholder="Check Out:">
+            <input type="text"  placeholder="Where?" class="search-input" name="destination">
+            <input type="text"  placeholder="Check In:" class="search-input" name="checkin">
+            <input type="text"  placeholder="Check Out:" class="search-input" name="checkout">
             <button type="submit">
-                <img src="images/Group%2024.png" alt="Search">
+                <img src="images/Search.png" alt="Search" class="search-icon">
             </button>
         </form>
-    </div>
-    <div class=centered>
-        <h2>
-            <?php
-            if ($searchDestination && $searchCheckinDate && $searchCheckoutDate) {
-                echo "You are seeing results for " . htmlspecialchars($searchDestination) . " from " . htmlspecialchars($searchCheckinDate) . " to " . htmlspecialchars($searchCheckoutDate);
-            } else if ($searchDestination) {
-                echo "You are seeing results for " . htmlspecialchars($searchDestination);
-            } else {
-                echo "No search criteria provided.";
-            }
-            ?>
-        </h2>
     </div>
 </nav>
 <main>
@@ -66,14 +50,10 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         <div class="container">
             <?php
             // Query to fetch listings based on the destination and optional date range
-            $query = "SELECT locationID, locationimage FROM Locations 
-          WHERE country LIKE '%$searchDestination%' 
-          OR city LIKE '%$searchDestination%' 
-          OR address LIKE '%$searchDestination%'";
-
-            //            if ($searchCheckinDate && $searchCheckoutDate) {
-            //                $query .= " AND checkin >= '$searchCheckinDate' AND checkout <= '$searchCheckoutDate'";
-            //            }
+            $query = "SELECT locationID, locationimage, address FROM Locations 
+                      WHERE country LIKE '%$searchDestination%' 
+                      OR city LIKE '%$searchDestination%' 
+                      OR address LIKE '%$searchDestination%'";
 
             // Execute the main query
             $result = $connection->query($query);
@@ -85,6 +65,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
             // Process each location record
             while ($location = $result->fetch_assoc()) {
                 $locationID = $location['locationID'];
+                $address = $location['address']; // Get the address
 
                 // Query to find the user associated with the location
                 $userLocationQuery = "SELECT userID FROM UsersxLocations WHERE locationID = '$locationID' LIMIT 1";
@@ -98,27 +79,33 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                     $userInfoResult = $connection->query($userInfoQuery);
 
                     if ($userInfoRow = $userInfoResult->fetch_assoc()) {
-                        echo '<div class="listing-card">
-
+                        echo '
+       
+                            <div class="listing-card">
                             <div class="listing-header">
                                 <div class="profile-section">
-                                <div class="host-info">
-                                    <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
-                                    <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
-                                    <div class="host-rating">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
-                                    </div>
-                                    <div class="profile-image-container">
-                                      <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image" style="width:100px; height:auto;">
-                                        <div class="verified-badge">✓</div>
+                                    <div class="host-info">
+                                    
+                                      <a href="details.php?id=' . urlencode($userInfoRow["id"]) . '" style="text-decoration: none;"> 
+        <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
+      
+                                        <p class="host-location">' . htmlspecialchars($address) . '</p>
+                                        <div class="host-rating">
+                                            <span class="star-icon">★</span>
+                                            <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
+                                        </div>
+                                        <div class="profile-image-container">
+                                          <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image" style="width:100px; height:auto;">
+                                          <div class="verified-badge">✓</div>
+                                        </div>
                                     </div>
                                 </div>
+                                <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
                             </div>
-                            <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
+                            <img src="' . htmlspecialchars($location["locationimage"]) . '" alt="Property image" class="property-image">
+                      
                         </div>
-                        <img src="' . htmlspecialchars($location["locationimage"]) . '" alt="Property image" class="property-image">
-                    </div>';
+                          </a>';
                     }
                 }
             }
@@ -129,7 +116,16 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 </body>
 </html>
 
+
 <style>
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
     body {
         font-family: lato;
         margin: 0;
@@ -215,6 +211,42 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         top: 12px;
         padding-left: 10px;
     }
+
+    .search-input {
+        width: 150px;
+        height: 30px;
+        padding: 10px;
+        border: 2px solid white;
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+        font-size: 13px;
+        outline: none;
+        margin-bottom: 75px;
+    }
+
+    .search-input::placeholder {
+        color: white;
+    }
+
+    .search button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .search img {;
+        flex-shrink: 0;
+        position: relative;
+        padding-left: 10px;
+    }
+
+    .search-icon {
+        width: 40px;
+        height: 30px;
+    }
+
 
     .explore h1 {
         margin-top: 44px;
@@ -357,7 +389,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
     body {
         background-color: #ffffff;
-        padding: 20px;
     }
 
     .container {
@@ -372,32 +403,47 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         margin-bottom: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         display: flex;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .listing-card:hover {
+        background-color: #9cccff; /* Blue background */
+        color: white; /* White text */
     }
 
     .listing-header {
         background-color: #f0f7ff;
         padding: 20px;
         flex: 1;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    .listing-card:hover .listing-header {
+        background-color: #9cccff; /* Blue background */
+        color: white; /* White text */
+    }
+
 
     .profile-section {
         display: flex;
         align-items: flex-start;
-        gap: 16px;
+        gap: 24px;
     }
 
     .profile-image-container {
         position: relative;
-        width: 64px;
-        height: 64px;
+        width: 120px; /* Fixed width */
+        height: 90px; /* Fixed height for rectangle shape */
+        overflow: hidden;
+        border-radius: 0; /* No border radius for rectangles */
+        background-color: #f0f0f0; /* Placeholder background color */
     }
 
-    .profile-image {
+    .profile-image-container img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: fill; /* Stretch image to fill the placeholder, ignoring aspect ratio */
     }
-
     .verified-badge {
         position: absolute;
         bottom: -4px;
@@ -482,6 +528,12 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         .logo{
             width:20px;
             height:20px;
+        }
+
+        .listing-card:hover .host-name,
+        .listing-card:hover .host-location,
+        .listing-card:hover .host-description {
+            color: white; /* Change text to white */
         }
     }
 </style>
