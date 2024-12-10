@@ -20,41 +20,22 @@ if($mysql->connect_errno) {
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
 </head>
 <body>
+
+
 <nav>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
-            <h2>COMPASS</h2>
-        </div>
-        <div class="menu">
-            <div class="menu-toggle">
-                <div class="profile-icon">
-                    <img src="images/Login.png" alt="login" class="login-icon">
-                </div>
-                <div class="dropdown-menu">
-                    <ul>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Log in</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Referral</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include 'nav.php'; ?>
     <div class=" title">
-        <marquee scrollamount="20" loop="10">WHERE ARE YOU TRAVELING?</marquee>
+ <h1>Where are you traveling?</h1>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
-    <form action="results.php">
+        <form action="results.php">
             <input type="text"  placeholder="Where?" class="search-input">
             <input type="text"  placeholder="Check In:" class="search-input">
             <input type="text"  placeholder="Check Out:" class="search-input">
@@ -64,6 +45,7 @@ if($mysql->connect_errno) {
         </form>
     </div>
 </nav>
+
 <main>
     <section>
         <div class="explore">
@@ -202,26 +184,19 @@ if($mysql->connect_errno) {
     </div>
     </div>
 </main>
+<footer>
+    <p>&copy; 2024 Compass. All rights reserved.</p>
+    <a href="admin/adminlanding.php"> Admin Page</a>
+</footer>
 </body>
 </html>
 
-<style> 
+<style>
 
     body {
         font-family: lato;
         margin: 0;
         padding: 0;
-    }
-
-    marquee {
-        font-size: 72.702px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        color:white;
-        font-family: "Krona One";
-        margin-bottom: 20px;
-        margin-top: 110px;
     }
 
     nav {
@@ -230,27 +205,20 @@ if($mysql->connect_errno) {
         padding: 0 0 50px 0;
     }
 
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #1B5299;
-        color: #3b1b06;
-        padding: 25px 93.26px 20px 93.26px;
-    }
-
-    .navbar .logo {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    .navbar .logo img {
-        width: 72px;
-        height: 72px;
-    }
 
     nav .title {
         text-align: center;
+    }
+
+    nav h1 {
+        font-size: 65px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color:white;
+        font-family: "Krona One";
+        margin-bottom: 50px;
+        margin-top: 70px;
     }
 
     .search-input {
@@ -267,62 +235,6 @@ if($mysql->connect_errno) {
 
     .search-input::placeholder {
         color: white;
-    }
-
-    .menu {
-        position: relative;
-        cursor: pointer;
-    }
-
-    .menu-toggle {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .profile-icon {
-        font-size: 24px;
-    }
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 40px;
-        right: 0;
-        background: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        width: 200px;
-    }
-
-    .dropdown-menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .dropdown-menu ul li {
-        padding: 10px 20px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .dropdown-menu ul li:last-child {
-        border-bottom: none;
-    }
-
-    .dropdown-menu ul li a {
-        text-decoration: none;
-        color: #333;
-        font-size: 14px;
-    }
-
-    .dropdown-menu ul li a:hover {
-        color: #007bff;
-    }
-
-    .menu:hover .dropdown-menu {
-        display: block;
     }
 
 
@@ -357,13 +269,13 @@ if($mysql->connect_errno) {
     .search {
         gap: 10px;
         text-align: center;
-        margin-top: 75px;
+        margin-top: 60px;
     }
 
     .search button {
-        background: none; 
+        background: none;
         border: none;
-        cursor: pointer; 
+        cursor: pointer;
         padding: 0;
     }
 
@@ -374,14 +286,10 @@ if($mysql->connect_errno) {
     }
 
     .search-icon {
-        width: 30px; 
+        width: 30px;
         height: 30px;
-        margin-top: 10px;
     }
 
-    .login-icon {
-        width: 75px;
-    }
 
     .explore h1 {
         margin-top: 44px;
@@ -398,7 +306,7 @@ if($mysql->connect_errno) {
         position: relative;
         overflow: hidden;
         border-radius: 10px;
-        width: 407.131px;
+        width:auto;
         height:242.173px;
     }
 
@@ -410,7 +318,6 @@ if($mysql->connect_errno) {
         opacity: 80%;
 
     }
-
 
     .card .overlay {
         position: absolute;
@@ -432,10 +339,18 @@ if($mysql->connect_errno) {
     .card:hover .overlay {
         opacity: 1;
     }
+
+    .featured {
+        width: auto;
+    }
+
+    .recent {
+        width: auto;
+    }
+
     .featured-grid {
         display: flex;
         gap: 10px;
-        overflow-x: auto;
         padding: 10px 93.26px 0px 93.26px;
         white-space: nowrap;
     }
@@ -479,6 +394,11 @@ if($mysql->connect_errno) {
         padding: 5px;
         border-radius:10px;
     }
+
+    .reviews {
+        width: 100%;
+    }
+
     .review-grid {
         display:flex;
         margin: 10px 93.26px;
@@ -488,7 +408,6 @@ if($mysql->connect_errno) {
     .review-card {
         width: 329.916px;
         height: 204.568px;
-        flex-shrink: 0;
         border-radius: 13.538px;
         border: 0.501px solid #000;
         background-color: #fff;
@@ -520,4 +439,75 @@ if($mysql->connect_errno) {
         line-height: 1.4;
     }
 
+    footer {
+        padding-left: 100px;
+        margin-bottom: 30px;
+
+    }
+
+    @media (max-width: 768px) {
+
+        .review-text {
+            font-size: 55%;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        h1{
+            padding: 30px;
+        }
+
+
+        nav h1 {
+            font-size: 32px;
+            margin-top: 20px;
+        }
+
+
+        .grid {
+            padding: 0 30px;
+        }
+
+        .featured-grid {
+            padding: 0 30px;
+            overflow-x: auto;
+        }
+
+
+        .featured-card {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .profile-image-container {
+            left: 75px;
+        }
+
+        h3 {
+            left: 25px;
+        }
+        .review-grid {
+            margin: 0 30px;
+        }
+
+        .card .overlay {
+            text-align: center;
+        }
+
+        .card {
+            height:150px;
+        }
+
+        footer {
+            text-align: center;
+            padding-left: 0px;
+        }
+
+    }
+
+
+
+    }
 </style>

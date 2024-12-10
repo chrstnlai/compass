@@ -20,10 +20,8 @@ if ($mysql->connect_errno) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <title>Sign Up</title>
     <style>
         /* General Styles */
@@ -355,28 +353,16 @@ if ($mysql->connect_errno) {
     </style>
 </head>
 <body>
+
 <?php include 'nav.php'; ?>
+
     <div class="main-container">
-        <h2>Create Your Account</h2>
-        <form action="signup2.php" method="POST">
+        <h2>Sign In</h2>
+        <form action="=signin2.php" method="POST">
             <!-- Username -->
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-
-            <!-- Phone Number -->
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+1234567890" pattern="[+]{1}[0-9]{10,15}" required>
-                <!-- Pattern ensures phone number starts with "+" followed by digits (10-15 characters) -->
-                <small>Format: +1234567890</small>
             </div>
 
             <!-- Password -->
@@ -385,66 +371,12 @@ if ($mysql->connect_errno) {
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
 
-            <!-- First Name -->
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
-            </div>
-
-            <!-- Last Name -->
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
-            </div>
-
-            <!-- Gender -->
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <input type="text" id="gender" name="gender" placeholder="Enter your gender" required>
-            </div>
-
-            <!-- Pronouns -->
-            <div class="form-group">
-                <label for="pronouns">Pronouns</label>
-                <input type="text" id="pronouns" name="pronouns" placeholder="Enter your preferred pronouns" required>
-            </div>
-
-            <!-- Date of Birth -->
-            <div class="form-group">
-                <label for="dob">Date of Birth</label>
-                <input type="date" id="dob" name="dob" required>
-            </div>
-            
-            <!-- Nationality -->
-            <div class="form-group">
-                <label for="nationality">Nationality</label>
-                <input type="text" id="nationality" name="nationality" placeholder="Enter your nationality" required>
-            </div>
-
-            <!-- Location -->
-            <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" id="location" name="location" placeholder="Enter your location (city, state/providence)" required>
-            </div>
-
-            <!-- Languages -->
-            <div class="form-group">
-                <label for="languages">Languages</label>
-                <input type="text" id="languages" name="languages" placeholder="Enter the languages you speak" required>
-            </div>
-
-            <!-- Biography -->
-            <div class="form-group">
-                <label for="bio">Biography</label>
-                <input type="text" id="bio" name="bio" placeholder="Enter a 2-3 sentence introduction" required>
-            </div>
-
-            <button type="submit" class="signup-btn">Sign Up</button>
+            <button type="submit" class="signup-btn">Sign In</button>
         </form>
     </div>
 
     <div class="footer">
-        &copy; <?php echo date("Y"); ?> Our Platform. All rights reserved.
+        &copy; <?php echo date("Y"); ?> COMPASS. All rights reserved.
     </div>
 </body>
 </html>

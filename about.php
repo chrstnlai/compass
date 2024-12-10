@@ -30,53 +30,119 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">
-        <img src="compass/images/compasslogo_db-04 1.png" alt="logoimage">
-        <h2>COMPASS</h2>
-    </div>
-    <img src="images/Group 23.png" alt="login">
-</div>
+<?php include 'nav.php'; ?>
 <nav>
     <div class=" title">
         About Us
         <div class="subtitle">
-            Our commitment to your best travel experience.
+            Learn more about our commitment to your best travel experience.
         </div>
     </div>
 
 
 </nav>
 <main>
-    <div class = resultnumber>
-        <br><br>
-        <div class="container">
 
-            <div class="section">
-                <h2 style="text-align: center">Our Mission</h2>
-                <br>
-                    Compass provides solo travelers with an exceptional, immersive, and memorable experience in your travel destination. Hosts not only provide a comfortable space to sleep within close proximity of your city of choice but also act as your <strong>local tour guide</strong> and cultural insider.
-            </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us - Compass</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+                color: #333;
+            }
+            .about-section {
+                padding: 50px 20px;
+                text-align: center;
+                background-color: #fff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin: 20px auto;
+                max-width: 900px;
+                border-radius: 10px;
+            }
+            .about-section h1 {
+                font-size: 36px;
+                margin-bottom: 15px;
+                color: #222;
+            }
+            .about-section p {
+                font-size: 18px;
+                line-height: 1.6;
+                color: #555;
+                margin: 10px 0;
+            }
+            .about-section .mission-statement {
+                margin: 20px 0;
+                font-size: 20px;
+                font-style: italic;
+                color: #444;
+            }
+            .features-list {
+                text-align: left;
+                margin: 30px auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                max-width: 800px;
+            }
+            .features-list h2 {
+                font-size: 28px;
+                margin-bottom: 15px;
+                color: #333;
+            }
+            .features-list ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+            .features-list li {
+                font-size: 18px;
+                margin: 10px 0;
+                padding: 10px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                color: #555;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .features-list li::before {
+                content: "✔";
+                color: #27ae60;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="about-section">
+        <h1>Welcome to <strong>Compass</strong>, the innovative platform <i>revolutionizing and personalizing</i> the way you travel.</h1>
 
-            <div class="containermini">
-                <h2>Features</h2>
-                <br>
-                <div class="cardmini">Connecting people</div>
-                    <div class ="cardmini-set.back">| Compass is an online social network and marketplace that connects people looking for accommodations with people who want to rent out their property and share their culture
-                </div>
-                <div class ="cardmini">
-                    Filters | Compass offers many filters to help users find properties that meet their needs, such as pet-friendly, longer than a month, or with a pool</div>
-                <div class ="cardmini">
-                Booking details | Users can book accommodations, including the date, check-in time, and other details.</div>
-                <div class ="cardmini">
-                Ratings and reviews | Users can share their experiences through ratings and reviews.</div>
-
-            </div>
-
-
-
+        <div class="section">
+            <h2 style="text-align: center">Our Mission</h2>
+            <br>
+            Compass provides solo travelers with an exceptional, immersive, and memorable experience in your travel destination. Hosts not only provide a comfortable space to sleep within close proximity of your city of choice but also act as your <strong>local tour guide</strong> and cultural insider.
+        </div>
+        <div class="features-list">
+            <h2>What We Offer</h2>
+            <ul>
+                <li><strong>Unique Travel Community:</strong>Compass is an online social network and marketplace that connects people looking for accommodations with people who want to rent out their property and share their culture.</li>
+                <li><strong>Ratings and reviews:</strong> Users can share their experiences through ratings and reviews. We support and promote transparency between our users and hosts for all parties' safety . </li>
+                <li><strong>Booking details:</strong> Users can book accommodations, including the date, check-in time, and other details. Compass also offers many filters to help users find properties that meet their needs, such as pet-friendly, longer than a month, or with a pool.</li>
+                <li><strong>Host Details:</strong> Hosts share what their ideal itinerary will look like, share their favorite locations, and showcase their home photos. Compass hosts are able to connect with their guests on a personal level prior to their guests visits.</li>
+            </ul>
         </div>
     </div>
+    </body>
+    </html>
+
 </main>
 
 <footer>
@@ -109,21 +175,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-size: 24pt;
         -webkit-text-stroke: 1px white;
     }
-    .subtitle::before{
-        content: "Our commitment to your best travel experience.";
-        font-size: 24pt;
-        position: absolute;
-        width: 0%;
-        height:20%;
-        overflow: hidden;
-        color: white;
-        border-right: 8px solid white;
-        transition: 5s ease-in-out;
-    }
-    .subtitle:hover::before{
-        width: max-content;
-        filter: drop-shadow(0 0 25px white);
-    }
+
     ul {
         margin: 10px 0;
         padding-left: 20px;
@@ -169,6 +221,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         height: 200px; /* Fixed height */
         display: flex;
         align-items: center;
+        float: right;
         justify-content: center;
     }
     .cardmini-set.back{
@@ -184,18 +237,14 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         transition: 1s;
     }
 
-    nav {
-        background-color: #1B5299;
-        margin: 0;
-        padding: 0 0 100px 100px;
-    }
+
     .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: white;
         color: #3b1b06;
-        padding: 25px 93.26px 45.63px 93.26px;
+        padding: 0px 93.26px 0px 93.26px;
     }
 
     .navbar .logo {
@@ -227,16 +276,18 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-weight: 900;
         line-height: normal;
     }
-
-    .title h2 {
-        color:white;
-        text-align: center;
-        font-family: lato;
-        font-size: 25px;
-        font-style: italic;
-        font-weight: 300;
+    .title {
+        font-size: 72.702px;
+        font-style: normal;
+        font-weight: 400;
         line-height: normal;
+        color:transparent;
+        -webkit-text-stroke: 3px white;
+        position: relative;
+        font-family: "Krona One";
+        padding-top: 110px;
     }
+
     main {
         align-items: center;
     }

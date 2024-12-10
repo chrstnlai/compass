@@ -15,6 +15,7 @@ if ($connection->connect_errno) {
 }
 
 // Get search parameters from request, with fallback to empty strings if not provided
+// HIIIIIIIII
 $searchDestination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '';
 $searchCheckinDate = isset($_REQUEST['checkin']) ? $_REQUEST['checkin'] : '';
 $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
@@ -32,13 +33,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">
-        <img src="images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
-        <h2>COMPASS</h2>
-    </div>
-    <img src="images/Group 23.png" alt="login">
-</div>
+<?php include 'nav.php'; ?>
 <nav>
     <div class=" title">
         Results
@@ -104,9 +99,8 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                     $userInfoResult = $connection->query($userInfoQuery);
 
                     if ($userInfoRow = $userInfoResult->fetch_assoc()) {
-                        echo
-                            '<a href="details.php" style="text-decoration: none; color: inherit;">
-                        <div class="listing-card">
+                        echo '<div class="listing-card">
+
                             <div class="listing-header">
                                 <div class="profile-section">
                                 <div class="host-info">
@@ -152,11 +146,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         padding-top: 110px;
     }
 
-    nav {
-        background-color: #1B5299;
-        margin: 0;
-        padding: 0 0 100px 0;
-    }
 
     .navbar {
         display: flex;

@@ -7,15 +7,7 @@
 
 </head>
 <body>
-<nav>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/CompassTransparent.png" alt="logoimage">
-            <h2>COMPASS</h2>
-        </div>
-        <img src="images/Login.png" alt="login" class="login-icon">
-    </div>
-</nav>
+<?php include 'nav.php'; ?>
 <main>
     <div class="card">
         <div class="image-container">
@@ -192,6 +184,40 @@
 
     .reserve-btn:hover {
         background-color: #5675a8;
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            flex-direction: column;
+            height: auto;
+            padding: 30px;
+        }
+
+        .card img {
+            height: 200px;
+        }
+
+        .info {
+            padding: 15px;
+        }
+
+        #text {
+            font-size: 20px;
+            padding-top: 10px;
+        }
+
+        .info .location {
+            font-size: 14px;
+        }
+
+        .button-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .button-container button {
+            width: 100%;
+        }
     }
 
 </style>
