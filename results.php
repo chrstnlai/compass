@@ -368,7 +368,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     }
 
     body {
-        background-color: #f5f5f5;
+        background-color: #ffffff;
         padding: 20px;
     }
 
