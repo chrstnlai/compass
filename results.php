@@ -60,6 +60,16 @@ $jsonMapLocations = json_encode($mapLocations);
 
 <html>
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB72JR3SZD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VB72JR3SZD');
+    </script>
+
     <title>Search Results</title>
     <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCTPy7I-WitRcAVAYZ7GZBBgSoNHx7Rs5I"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
