@@ -46,9 +46,9 @@ if($mysql->connect_errno) {
     </div>
     <div class="search">
         <form action="results.php">
-            <input type="text"  placeholder="Where?" class="search-input">
-            <input type="text"  placeholder="Check In:" class="search-input">
-            <input type="text"  placeholder="Check Out:" class="search-input">
+            <input type="text"  placeholder="Where?" class="search-input" name="destination">
+            <input type="text"  placeholder="Check In:" class="search-input" name="checkin">
+            <input type="text"  placeholder="Check Out:" class="search-input" name="checkout">
             <button type="submit">
                 <img src="images/Search.png" alt="Search" class="search-icon">
             </button>
