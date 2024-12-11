@@ -268,6 +268,11 @@ $jsonMapLocations = json_encode($mapLocations);
 
     main {
         align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0;
+        flex-grow:1;
+
     }
 
     .search {
@@ -451,6 +456,10 @@ $jsonMapLocations = json_encode($mapLocations);
     .resultnumber {
         text-align: center;
         padding: 20px;
+        width: 60%;
+        margin-left: auto; /* Push the element to the right */
+        margin-right: 0;   /* Ensure no gap on the right */
+        float: right;
     }
 
     * {
@@ -581,6 +590,10 @@ $jsonMapLocations = json_encode($mapLocations);
     }
 
     @media (max-width: 800px) {
+        #map {
+            position: relative;
+        }
+
         .listing-card {
             flex-direction: column;
         }
@@ -608,9 +621,15 @@ $jsonMapLocations = json_encode($mapLocations);
         .listing-card:hover .host-description {
             color: white; /* Change text to white */
         }
+
     }
     #map {
         height: 500px; /* Set a fixed height */
-        width: 100%;   /* Full width */
+        width: 35%;
+        flex-grow: 1;
+        margin: 20px;
+        border-radius: 8px;
+        top: 550px;
+        position: absolute;
     }
 </style>
