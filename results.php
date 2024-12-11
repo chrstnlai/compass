@@ -168,7 +168,7 @@ $jsonMapLocations = json_encode($mapLocations);
                                             <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
                                         </div>
                                         <div class="profile-image-container">
-                                          <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image" style="width:100px; height:auto;">
+                                          <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image";">
                                           <div class="verified-badge">✓</div>
                                         </div>
                                     </div>
@@ -524,7 +524,9 @@ $jsonMapLocations = json_encode($mapLocations);
     .profile-image-container img {
         width: 100%;
         height: 100%;
-        object-fit: fill; /* Stretch image to fill the placeholder, ignoring aspect ratio */
+        object-fit: cover;
+        object-position: center;
+
     }
     .verified-badge {
         position: absolute;
@@ -585,7 +587,7 @@ $jsonMapLocations = json_encode($mapLocations);
 
     .property-image {
         width: 400px;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
     }
 
