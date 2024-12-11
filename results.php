@@ -60,6 +60,16 @@ $jsonMapLocations = json_encode($mapLocations);
 
 <html>
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB72JR3SZD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VB72JR3SZD');
+    </script>
+
     <title>Search Results</title>
     <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCTPy7I-WitRcAVAYZ7GZBBgSoNHx7Rs5I"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
@@ -168,7 +178,7 @@ $jsonMapLocations = json_encode($mapLocations);
                                             <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
                                         </div>
                                         <div class="profile-image-container">
-                                          <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image" style="width:100px; height:auto;">
+                                          <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image";">
                                           <div class="verified-badge">✓</div>
                                         </div>
                                     </div>
@@ -268,6 +278,11 @@ $jsonMapLocations = json_encode($mapLocations);
 
     main {
         align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0;
+        flex-grow:1;
+
     }
 
     .search {
@@ -451,6 +466,10 @@ $jsonMapLocations = json_encode($mapLocations);
     .resultnumber {
         text-align: center;
         padding: 20px;
+        width: 60%;
+        margin-left: auto; /* Push the element to the right */
+        margin-right: 0;   /* Ensure no gap on the right */
+        float: right;
     }
 
     * {
@@ -515,7 +534,9 @@ $jsonMapLocations = json_encode($mapLocations);
     .profile-image-container img {
         width: 100%;
         height: 100%;
-        object-fit: fill; /* Stretch image to fill the placeholder, ignoring aspect ratio */
+        object-fit: cover;
+        object-position: center;
+
     }
     .verified-badge {
         position: absolute;
@@ -576,11 +597,15 @@ $jsonMapLocations = json_encode($mapLocations);
 
     .property-image {
         width: 400px;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
     }
 
     @media (max-width: 800px) {
+        #map {
+            position: relative;
+        }
+
         .listing-card {
             flex-direction: column;
         }
@@ -608,9 +633,15 @@ $jsonMapLocations = json_encode($mapLocations);
         .listing-card:hover .host-description {
             color: white; /* Change text to white */
         }
+
     }
     #map {
         height: 500px; /* Set a fixed height */
-        width: 100%;   /* Full width */
+        width: 35%;
+        flex-grow: 1;
+        margin: 20px;
+        border-radius: 8px;
+        top: 550px;
+        position: absolute;
     }
 </style>
