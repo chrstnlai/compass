@@ -7,7 +7,6 @@ $databaseName = "anikets_compass";
 
 // Create a new MySQLi instance and establish a connection
 $connection = new mysqli($serverName, $username, $password, $databaseName);
-
 $connection->set_charset("utf8");
 
 // Check for a connection error
@@ -18,15 +17,47 @@ if ($connection->connect_errno) {
 
 header('Content-Type: text/html; charset=utf-8');
 
+
 // Get search parameters from request, with fallback to empty strings if not provided
 $searchDestination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '';
 $searchCheckinDate = isset($_REQUEST['checkin']) ? $_REQUEST['checkin'] : '';
 $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
+// Query to fetch listings based on the destination and optional date range
+$query = "SELECT locationID, locationimage, address, latitude, longitude 
+          FROM Locations 
+          WHERE country LIKE '%$searchDestination%' 
+             OR city LIKE '%$searchDestination%' 
+             OR address LIKE '%$searchDestination%'";
+
+// Execute the main query
+$result = $connection->query($query);
+
+if (!$result) {
+    die("Query failed: " . $connection->error);
+}
+
+// Initialize an array to store locations for the map
+$mapLocations = [];
+
+// Process each location record
+while ($location = $result->fetch_assoc()) {
+    $mapLocations[] = [
+        'id' => $location['locationID'],
+        'lat' => (float) $location['latitude'], // Ensure latitude is a float
+        'lng' => (float) $location['longitude'], // Ensure longitude is a float
+        'url' => 'details.php?id=' . urlencode($location['locationID']) // Generate URL for each location
+    ];
+}
+
+// Convert the PHP array to JSON for use in JavaScript
+$jsonMapLocations = json_encode($mapLocations);
 ?>
 
 <html>
 <head>
+    <title>Search Results</title>
+    <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAupYzy-Y02I3bFe-PbMuoE63A9aRXPJvY"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
@@ -50,11 +81,45 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     </div>
 </nav>
 <main>
+    <!-- Map Data Visualization Container -->
+    <div id = "map"></div>
+
+    <script>
+        // Pass PHP data to JavaScript
+        const mapLocations = <?php echo $jsonMapLocations; ?>;
+
+        function initMap() {
+            // Initialize the map centered on the US
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: { lat: 39.8283, lng: -98.5795 } // Center of the US
+            });
+
+            // Add markers for each location
+            mapLocations.forEach(location => {
+                const marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map,
+                    title: `Location ID: ${location.id}`
+                });
+
+                // Add click event to redirect when marker is clicked
+                marker.addListener('click', () => {
+                    window.location.href = location.url;
+                });
+            });
+        }
+
+        // Initialize the map on page load
+        window.onload = initMap;
+    </script>
+
+    <!-- Search Results Container -->
     <div class=resultnumber>
         <div class="container">
             <?php
             // Query to fetch listings based on the destination and optional date range
-            $query = "SELECT locationID, locationimage, address FROM Locations 
+            $query = "SELECT locationID, locationimage, address, latitude, longitude FROM Locations 
                       WHERE country LIKE '%$searchDestination%' 
                       OR city LIKE '%$searchDestination%' 
                       OR address LIKE '%$searchDestination%'";
@@ -539,5 +604,9 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         .listing-card:hover .host-description {
             color: white; /* Change text to white */
         }
+    }
+    #map {
+        height: 500px; /* Set a fixed height */
+        width: 100%;   /* Full width */
     }
 </style>
