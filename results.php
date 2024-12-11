@@ -86,7 +86,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                                 <div class="profile-section">
                                     <div class="host-info">
                                     
-                                      <a href="details.php?id=' . urlencode($userInfoRow["id"]) . '" style="text-decoration: none;"> 
+                                      <a href="details.php?id=' . urlencode($userInfoRow["userID"]) . '" style="text-decoration: none;"> 
         <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
       
                                         <p class="host-location">' . htmlspecialchars($address) . '</p>
