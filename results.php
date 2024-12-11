@@ -24,14 +24,18 @@ $searchCheckinDate = isset($_REQUEST['checkin']) ? $_REQUEST['checkin'] : '';
 $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 // Query to fetch listings based on the destination and optional date range
-$query = "SELECT locationID, locationimage, address, latitude, longitude 
-          FROM Locations 
-          WHERE country LIKE '%$searchDestination%' 
-             OR city LIKE '%$searchDestination%' 
-             OR address LIKE '%$searchDestination%'";
+$stmt = $connection->prepare("
+    SELECT locationID, locationimage, country, city, address, latitude, longitude
+    FROM Locations
+    WHERE country LIKE ?
+       OR city LIKE ?
+       OR address LIKE ?
+");
 
-// Execute the main query
-$result = $connection->query($query);
+$searchTerm = '%' . $searchDestination . '%';
+$stmt->bind_param('sss', $searchTerm, $searchTerm, $searchTerm);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if (!$result) {
     die("Query failed: " . $connection->error);
@@ -44,9 +48,9 @@ $mapLocations = [];
 while ($location = $result->fetch_assoc()) {
     $mapLocations[] = [
         'id' => $location['locationID'],
-        'lat' => (float) $location['latitude'], // Ensure latitude is a float
-        'lng' => (float) $location['longitude'], // Ensure longitude is a float
-        'url' => 'details.php?id=' . urlencode($location['locationID']) // Generate URL for each location
+        'lat' => (float)$location['latitude'],
+        'lng' => (float)$location['longitude'],
+        'url' => 'details.php?id=' . urlencode($location['locationID'])
     ];
 }
 
@@ -57,7 +61,7 @@ $jsonMapLocations = json_encode($mapLocations);
 <html>
 <head>
     <title>Search Results</title>
-    <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAupYzy-Y02I3bFe-PbMuoE63A9aRXPJvY"></script>
+    <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCTPy7I-WitRcAVAYZ7GZBBgSoNHx7Rs5I"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
