@@ -8,11 +8,15 @@ $databaseName = "anikets_compass";
 // Create a new MySQLi instance and establish a connection
 $connection = new mysqli($serverName, $username, $password, $databaseName);
 
+$connection->set_charset("utf8");
+
 // Check for a connection error
 if ($connection->connect_errno) {
     echo "Database connection error: " . $connection->connect_error;
     exit();
 }
+
+header('Content-Type: text/html; charset=utf-8');
 
 // Get search parameters from request, with fallback to empty strings if not provided
 $searchDestination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '';
