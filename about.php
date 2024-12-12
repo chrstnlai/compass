@@ -58,6 +58,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us - Compass</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -165,7 +166,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     body {
         font-family: lato;
         margin: 0;
-        background-color: #f5f5f5;
     }
 
     .title {
@@ -173,26 +173,17 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        color:white;
-        position: relative;
-        font-family: "Krona One";
-    }
-
-    .title p {
-        font-size: 72.702px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        color:white;
+        color:transparent;
+        -webkit-text-stroke: 3px white;
         position: relative;
         font-family: "Krona One";
         padding-top: 110px;
-        padding-bottom: 30px;
     }
-
     .subtitle {
+
+        color:transparent;
         font-size: 24pt;
-        padding-bottom: 70px;
+        -webkit-text-stroke: 1px white;
     }
 
     ul {
@@ -263,6 +254,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         align-items: center;
         background-color: white;
         color: #3b1b06;
+        padding: 0px 93.26px 0px 93.26px;
     }
 
     .navbar .logo {
@@ -304,7 +296,17 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-weight: 900;
         line-height: normal;
     }
-
+    .title {
+        font-size: 72.702px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color:transparent;
+        -webkit-text-stroke: 3px white;
+        position: relative;
+        font-family: "Krona One";
+        padding-top: 110px;
+    }
 
     main {
         align-items: center;
@@ -409,7 +411,10 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-
+    body {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
 
     .container {
         max-width: 1200px;
@@ -417,10 +422,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     }
 
     @media (max-width: 800px) {
-
-        .title {
-            padding: 20px;
-        }
         .listing-card {
             flex-direction: column;
         }

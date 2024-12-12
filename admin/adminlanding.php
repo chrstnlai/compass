@@ -22,7 +22,7 @@ session_start();
 // Check if the user is logged in and has a valid security level
 if (!isset($_SESSION['securityLevel']) || $_SESSION['securityLevel'] != 2) {
     // If the user is not authorized, redirect them to a login page or show an error
-header("Location: signin.php"); // Redirect to login page
+header("Location: ../signin.php"); // Redirect to login page
 exit(); // Stop further execution of the script
 }
 ?>

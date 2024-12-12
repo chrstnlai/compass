@@ -118,9 +118,9 @@ $jsonMapLocations = json_encode($mapLocations);
                 });
 
                 // Add click event to redirect when marker is clicked
-                marker.addListener('click', () => {
-                    window.location.href = location.url;
-                });
+                //marker.addListener('click', () => {
+                //   window.location.href = location.url;
+                //});
             });
         }
 
