@@ -29,8 +29,10 @@ if($mysql->connect_errno) {
 <nav>
     <div class="navbar">
         <div class="logo">
-            <img src="../images/CompassTransparent.png" alt="logoimage">
-            <h2>COMPASS</h2>
+            <a href="../search.php" style="text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                <img src="../images/CompassTransparent.png" alt="logoimage" style="width: 80px; height: auto;">
+                <h2>COMPASS</h2>
+            </a>
         </div>
         <img src="../images/Login.png" alt="login" class="login-icon">
     </div>
@@ -83,6 +85,10 @@ if($mysql->connect_errno) {
         </div>
     </div>
 </main>
+<footer>
+    <p>&copy; 2024 Compass. All rights reserved.</p>
+    <a href="admin/adminlanding.php"> Admin Page</a>
+</footer>
 </body>
 </html>
 
@@ -198,6 +204,11 @@ if($mysql->connect_errno) {
 
     .login-icon {
         width: 75px;
+    }
+    footer {
+        padding-top: 50px;
+        padding-left: 100px;
+        margin-bottom: 30px;
     }
 
 </style>

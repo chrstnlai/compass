@@ -159,17 +159,17 @@ $jsonMapLocations = json_encode($mapLocations);
 
             $result->data_seek($start-1);
 
-//            echo "<a href='results.php?start=" . ($start-10) .
-//                "'>Previous Records</a> | " .
-//                "<a href='results.php?start=" . ($start+10)  .
-//                "'>Next Records</a><br><br>";
+            //            echo "<a href='results.php?start=" . ($start-10) .
+            //                "'>Previous Records</a> | " .
+            //                "<a href='results.php?start=" . ($start+10)  .
+            //                "'>Next Records</a><br><br>";
             echo "<a href='results.php?start=" . ($start-10) . "&destination=" . $searchDestination. "&checkin=" . $searchCheckinDate . "&checkout=" . $searchCheckoutDate . "'>Previous Records</a> | " .
                 "<a href='results.php?start=" . ($start+10)  . "&destination=" . $searchDestination. "&checkin=" . $searchCheckinDate . "&checkout=" . $searchCheckoutDate . "'>Next Records</a><br><br>";
             // Process each location record
             while ($location = $result->fetch_assoc()) {
-                    if($counter==$end)
-                    { break; }
-                    $counter++;
+                if($counter==$end)
+                { break; }
+                $counter++;
                 $locationID = $location['locationID'];
                 $address = $location['address']; // Get the address
 
@@ -254,7 +254,6 @@ $jsonMapLocations = json_encode($mapLocations);
         align-items: center;
         background-color: white;
         color: #3b1b06;
-        padding: 25px 93.26px 45.63px 93.26px;
     }
 
     .navbar .logo {
@@ -315,12 +314,10 @@ $jsonMapLocations = json_encode($mapLocations);
     }
 
     .search img {
-        width: 35px;
-        height: 35px;
         flex-shrink: 0;
         position: relative;
-        top: 12px;
-        padding-left: 10px;
+        top: 11px;
+        margin-left: 10px;
     }
 
     .search-input {
@@ -347,14 +344,9 @@ $jsonMapLocations = json_encode($mapLocations);
         padding: 0;
     }
 
-    .search img {;
-        flex-shrink: 0;
-        position: relative;
-        padding-left: 10px;
-    }
 
     .search-icon {
-        width: 40px;
+        width: 30px;
         height: 30px;
     }
 
@@ -489,7 +481,7 @@ $jsonMapLocations = json_encode($mapLocations);
     .resultnumber {
         text-align: center;
         padding: 20px;
-        width: 60%;
+        width: 100%;
         margin-left: auto; /* Push the element to the right */
         margin-right: 0;   /* Ensure no gap on the right */
         float: right;
@@ -624,9 +616,29 @@ $jsonMapLocations = json_encode($mapLocations);
         object-fit: cover;
     }
 
+    #map {
+        height: 400px; /* Set a fixed height */
+        width: 500px;
+        flex-grow: 1;
+        margin: 20 120px;
+        border-radius: 8px;
+        position: relative;
+        top: 15px;
+    }
+
     @media (max-width: 800px) {
         #map {
             position: relative;
+            top: 50px;
+            margin:20px;
+        }
+        .resultnumber {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-left: auto; /* Push the element to the right */
+            margin-right: 0;   /* Ensure no gap on the right */
+            float: right;
         }
 
         .listing-card {
@@ -640,6 +652,7 @@ $jsonMapLocations = json_encode($mapLocations);
 
         .container {
             padding: 10px;
+            width: 100%;
         }
 
         .listing-header {
@@ -658,13 +671,5 @@ $jsonMapLocations = json_encode($mapLocations);
         }
 
     }
-    #map {
-        height: 500px; /* Set a fixed height */
-        width: 35%;
-        flex-grow: 1;
-        margin: 20px;
-        border-radius: 8px;
-        top: 550px;
-        position: absolute;
-    }
+
 </style>

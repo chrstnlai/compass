@@ -305,6 +305,7 @@ if($mysql->connect_errno) {
         flex-shrink: 0;
         position: relative;
         padding-left: 10px;
+        top: 11px;
     }
 
     .search-icon {
