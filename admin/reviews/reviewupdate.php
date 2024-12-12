@@ -25,23 +25,23 @@ if ($mysql->connect_errno) {
 
 // Get 'id' parameter from form submission
 if (isset($_POST['id'])) {
-    $reportID = $_POST['id'];
-    $reporterUserID = $_POST['reporterUserID'];
-    $reportedUserID = $_POST['reportedUserID'];
-    $reportType = $_POST['reportType'];
-    $description = $_POST['description'];
-    $status = $_POST['status'];
+    $reviewID = $_POST['id'];
+    $reviewerID = $_POST['reviewerID'];
+    $revieweeID = $_POST['revieweeID'];
+    $reviewType = $_POST['reviewType'];
+    $rating = $_POST['rating'];
+    $comment = $_POST['comment'];
     $createdAt = $_POST['createdAt']; // The 'createdAt' will be saved as a string in the correct datetime format
 
     // Prepare the update query
-    $sql = "UPDATE Reports SET 
-                reporterUserID = ?, 
-                reportedUserID = ?, 
-                reportType = ?, 
-                description = ?, 
-                status = ?, 
+    $sql = "UPDATE Reviews SET 
+                reviewerID = ?, 
+                revieweeID = ?, 
+                reviewType = ?, 
+                rating = ?, 
+                comment = ?, 
                 createdAt = ? 
-            WHERE reportID = ?";
+            WHERE reviewID = ?";
 
     $stmt = $mysql->prepare($sql);
     if (!$stmt) {
@@ -50,25 +50,25 @@ if (isset($_POST['id'])) {
     }
 
     // Bind parameters and execute the update query
-    $stmt->bind_param('iissssi',
-        $reporterUserID,
-        $reportedUserID,
-        $reportType,
-        $description,
-        $status,
+    $stmt->bind_param('iisissi',
+        $reviewerID,
+        $revieweeID,
+        $reviewType,
+        $rating,
+        $comment,
         $createdAt,
-        $reportID
+        $reviewID
     );
 
     if ($stmt->execute()) {
-        echo "Report with ID $reportID has been updated successfully.";
+        echo "Review with ID $reviewID has been updated successfully.";
     } else {
-        echo "Error updating report: " . $stmt->error;
+        echo "Error updating review: " . $stmt->error;
     }
 
     $stmt->close();
 } else {
-    echo "No report ID provided.";
+    echo "No review ID provided.";
 }
 
 $mysql->close();

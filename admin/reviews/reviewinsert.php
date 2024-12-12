@@ -22,24 +22,26 @@ if ($mysql->connect_errno) {
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form values
-    $reporterUserID = trim($_POST['reporterUserID']);
-    $reportedUserID = trim($_POST['reportedUserID']);
-    $reportType = trim($_POST['reportType']);
-    $description = trim($_POST['description']);
-    $status = $_POST['status'];
-    $createdAt = $_POST['createdAt'];  // Timestamp from the form
+    $reviewerID = trim($_POST['reviewerID']);
+    $revieweeID = trim($_POST['revieweeID']);
+    $reviewType = trim($_POST['reviewType']);
+    $rating = trim($_POST['rating']);
+    $comment = trim($_POST['comment']);
+    $createdAt = trim($_POST['createdAt']);  // Value from the form
 
-    // Check if any required field is empty
-    if (empty($reporterUserID) || empty($reportedUserID) || empty($reportType) || empty($description) || empty($status) || empty($createdAt)) {
+    // Convert createdAt to MySQL DATETIME format
+    $createdAt = str_replace('T', ' ', $createdAt); // Replace 'T' with space
+
+    // Validate required fields
+    if (empty($reviewerID) || empty($revieweeID) || empty($reviewType) || empty($rating) || empty($comment) || empty($createdAt)) {
         echo "All fields are required. Please fill out all fields.";
         exit();
     }
 
-    // Prepare the insert query
-    $sql = "INSERT INTO Reports (reporterUserID, reportedUserID, reportType, description, status, createdAt) 
+    // Prepare the SQL query
+    $sql = "INSERT INTO Reviews (reviewerID, revieweeID, reviewType, rating, comment, createdAt) 
             VALUES (?, ?, ?, ?, ?, ?)";
 
-    // Prepare the statement
     $stmt = $mysql->prepare($sql);
     if (!$stmt) {
         echo "Prepare failed: " . $mysql->error;
@@ -47,20 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Bind parameters
-    $stmt->bind_param('iissss',
-        $reporterUserID,
-        $reportedUserID,
-        $reportType,
-        $description,
-        $status,
+    $stmt->bind_param('iisiss',
+        $reviewerID,
+        $revieweeID,
+        $reviewType,
+        $rating,
+        $comment,
         $createdAt
     );
 
     // Execute the query
     if ($stmt->execute()) {
-        echo "Report added successfully!";
+        echo "Review added successfully!";
     } else {
-        echo "Error inserting report: " . $stmt->error;
+        echo "Error inserting review: " . $stmt->error;
     }
 
     // Close the statement

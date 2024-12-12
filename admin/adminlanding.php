@@ -16,6 +16,15 @@ if($mysql->connect_errno) {
     exit();
 }
 
+// Start the session
+session_start();
+
+// Check if the user is logged in and has a valid security level
+if (!isset($_SESSION['securityLevel']) || $_SESSION['securityLevel'] != 2) {
+    // If the user is not authorized, redirect them to a login page or show an error
+header("Location: signin.php"); // Redirect to login page
+exit(); // Stop further execution of the script
+}
 ?>
 
 <html>
@@ -29,10 +38,10 @@ if($mysql->connect_errno) {
 <nav>
     <div class="navbar">
         <div class="logo">
-            <img src="../images/CompassTransparent.png" alt="logoimage">
+            <img src="images/CompassTransparent.png" alt="logoimage">
             <h2>COMPASS</h2>
         </div>
-        <img src="../images/Login.png" alt="login" class="login-icon">
+        <img src="images/Login.png" alt="login" class="login-icon">
     </div>
     <div class=" title">
         <div id="bigtitle"> ADMIN PAGE</div>
@@ -60,16 +69,14 @@ if($mysql->connect_errno) {
             </a>
         </div>
 
-        <div id="documents">
-            <h2>Documents</h2>
-            <button>Add</button>
-            <button>Edit/Delete</button>
-        </div>
-
         <div id="reviews">
             <h2>Reviews</h2>
-            <button>Add</button>
-            <button>Edit/Delete</button>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/reviews/reviewadd.php" style="text-decoration: none;">
+                <button>Add</button>
+            </a>
+            <a href="https://anikets.webdev.iyaserver.com/compass/admin/reviews/revieweditdelete.php" style="text-decoration: none;">
+                <button>Edit/Delete</button>
+            </a>
         </div>
 
         <div id="reports">

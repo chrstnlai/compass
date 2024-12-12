@@ -5,6 +5,13 @@ $userid = "anikets";
 $userpw = "AcadDev_Singh_6362298333";
 $db = "anikets_compass";
 
+// Check if the user is logged in and has a valid security level
+if (!isset($_SESSION['securityLevel']) || $_SESSION['securityLevel'] != 2) {
+    // If the user is not authorized, redirect them to a login page or show an error
+    header("Location: signin.php"); // Redirect to login page
+    exit(); // Stop further execution of the script
+}
+
 $mysql = new mysqli($host, $userid, $userpw, $db);
 
 $sql = "SELECT * FROM Reports";
@@ -26,12 +33,12 @@ while ($row = $results->fetch_assoc()) {
     echo "<td>" . $row['status'] . "</td>";
     echo "<td>" . $row['createdAt'] . "</td>";
 
-    echo "<td>" . "<a href='userseditdata.php?id="
+    echo "<td>" . "<a href='revieweditdata.php?id="
         . $row["reportID"] . "'>"
         . 'Click to edit'
         . "</a></strong>" . "</td>";
 
-    echo "<td>" . "<a href='usersdeletedata.php?id="
+    echo "<td>" . "<a href='reviewdeletedata.php?id="
         . $row["reportID"] . "'>"
         . 'Click to delete'
         . "</a></strong>" . "</td>";

@@ -1,9 +1,15 @@
 <?php
-include 'nav.php';
 $host = "webdev.iyaserver.com";
 $userid = "anikets";
 $userpw = "AcadDev_Singh_6362298333";
 $db = "anikets_compass";
+
+// Check if the user is logged in and has a valid security level
+if (!isset($_SESSION['securityLevel']) || $_SESSION['securityLevel'] != 2) {
+    // If the user is not authorized, redirect them to a login page or show an error
+    header("Location: signin.php"); // Redirect to login page
+    exit(); // Stop further execution of the script
+}
 
 $mysql = new mysqli(
     $host,
@@ -13,53 +19,27 @@ $mysql = new mysqli(
 );
 
 if ($mysql->connect_errno) {
-    echo "db connection error: " . $mysql->connect_error;
+    echo "DB connection error: " . $mysql->connect_error;
     exit();
 }
 
 if (isset($_REQUEST['id'])) {
-    $locationID = $_REQUEST['id'];
+    $userID = $_REQUEST['id'];
 
-    // First, delete the records from the UsersxLocations table that reference the locationID
-    $sqlDeleteUsersxLocations = "DELETE FROM UsersxLocations WHERE locationID = ?";
-    $stmtDeleteUsersxLocations = $mysql->prepare($sqlDeleteUsersxLocations);
+    // Prepare and execute the delete query
+    $sql = "DELETE FROM Users WHERE userID = ?";
+    $stmt = $mysql->prepare($sql);
+    $stmt->bind_param('i', $userID);
 
-    if ($stmtDeleteUsersxLocations === false) {
-        // If prepare fails, show the error
-        echo "Error preparing SQL query: " . $mysql->error;
-        exit();
-    }
-
-    $stmtDeleteUsersxLocations->bind_param('i', $locationID);
-
-    if ($stmtDeleteUsersxLocations->execute()) {
-        echo "Deleted associated UsersxLocations entries successfully.<br>";
+    if ($stmt->execute()) {
+        echo "User with ID $userID has been deleted successfully.";
     } else {
-        echo "Error deleting associated UsersxLocations entries: " . $stmtDeleteUsersxLocations->error . "<br>";
+        echo "Error deleting user: " . $stmt->error;
     }
 
-    // Now delete the location from the Locations table
-    $sqlDeleteLocation = "DELETE FROM Locations WHERE locationID = ?";
-    $stmtDeleteLocation = $mysql->prepare($sqlDeleteLocation);
-
-    if ($stmtDeleteLocation === false) {
-        // If prepare fails, show the error
-        echo "Error preparing SQL query: " . $mysql->error;
-        exit();
-    }
-
-    $stmtDeleteLocation->bind_param('i', $locationID);
-
-    if ($stmtDeleteLocation->execute()) {
-        echo "Location with ID $locationID has been deleted successfully.";
-    } else {
-        echo "Error deleting location: " . $stmtDeleteLocation->error;
-    }
-
-    $stmtDeleteUsersxLocations->close();
-    $stmtDeleteLocation->close();
+    $stmt->close();
 } else {
-    echo "No location ID provided. Please try again.";
+    echo "No user ID provided. Please try again.";
 }
 
 $mysql->close();

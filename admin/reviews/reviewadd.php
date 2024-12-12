@@ -11,6 +11,7 @@ if (!isset($_SESSION['securityLevel']) || $_SESSION['securityLevel'] != 2) {
     exit(); // Stop further execution of the script
 }
 
+// Connect to the database
 $mysql = new mysqli(
     $host,
     $userid,
@@ -22,25 +23,27 @@ if ($mysql->connect_errno) {
     echo "db connection error: " . $mysql->connect_error;
     exit();
 }
-
-if (isset($_REQUEST['id'])) {
-    $reportID = $_REQUEST['id'];
-
-    // Prepare and execute the delete query
-    $sql = "DELETE FROM Reports WHERE reportID = ?";
-    $stmt = $mysql->prepare($sql);
-    $stmt->bind_param('i', $reportID);
-
-    if ($stmt->execute()) {
-        echo "Report with ID $reportID has been deleted successfully.";
-    } else {
-        echo "Error deleting report: " . $stmt->error;
-    }
-
-    $stmt->close();
-} else {
-    echo "No report ID provided. Please try again.";
-}
-
-$mysql->close();
 ?>
+
+<html>
+
+<body>
+<form action="reviewinsert.php" method="post">
+    <h2>Add a New Review</h2>
+
+    Reviewer ID: <input type="text" name="reviewerID" required><br>
+
+    Reviewee ID: <input type="text" name="revieweeID" required><br>
+
+    Review Type: <input type="text" name="reviewType" required><br>
+
+    Rating (1-5): <input type="number" name="rating" min="1" max="5" required><br>
+
+    Comment: <textarea name="comment" required></textarea><br>
+
+    Created At: <input type="datetime-local" name="createdAt" required><br>
+
+    <input type="submit" value="Submit Review">
+</form>
+</body>
+</html>

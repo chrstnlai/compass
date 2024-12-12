@@ -5,6 +5,13 @@ $userid = "anikets";
 $userpw = "AcadDev_Singh_6362298333";
 $db = "anikets_compass";
 
+// Check if the user is logged in and has a valid security level
+if (!isset($_SESSION['securityLevel']) || $_SESSION['securityLevel'] != 2) {
+    // If the user is not authorized, redirect them to a login page or show an error
+    header("Location: signin.php"); // Redirect to login page
+    exit(); // Stop further execution of the script
+}
+
 // Include login variables if needed
 //$mysql = new mysqli($host, $userid, $userpw, $db);
 
@@ -43,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Prepare the insert query
     $sql = "INSERT INTO Users (username, email, phoneNumber, pw, firstName, lastName, gender, pronouns, DOB, nationality, loc, languages, bio, isVerified, guestRating, hostRating, numProperties, userimage, securityLevel)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $mysql->prepare($sql);
     if (!$stmt) {

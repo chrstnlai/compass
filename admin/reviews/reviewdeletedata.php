@@ -24,22 +24,22 @@ if ($mysql->connect_errno) {
 }
 
 if (isset($_REQUEST['id'])) {
-    $reportID = $_REQUEST['id'];
+    $reviewID = $_REQUEST['id'];
 
     // Prepare and execute the delete query
-    $sql = "DELETE FROM Reports WHERE reportID = ?";
+    $sql = "DELETE FROM Reviews WHERE reviewID = ?";
     $stmt = $mysql->prepare($sql);
-    $stmt->bind_param('i', $reportID);
+    $stmt->bind_param('i', $reviewID);
 
     if ($stmt->execute()) {
-        echo "Report with ID $reportID has been deleted successfully.";
+        echo "Review with ID $reviewID has been deleted successfully.";
     } else {
-        echo "Error deleting report: " . $stmt->error;
+        echo "Error deleting review: " . $stmt->error;
     }
 
     $stmt->close();
 } else {
-    echo "No report ID provided. Please try again.";
+    echo "No review ID provided. Please try again.";
 }
 
 $mysql->close();
