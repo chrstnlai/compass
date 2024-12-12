@@ -31,7 +31,7 @@ $userID = intval($_GET['user_ID']);
 $locationID = intval($_GET['location_ID']);
 
 // Query to fetch user details based on the user ID
-$sql = "SELECT firstName, lastName, userImage, bio, hostRating,address, description,locationimage
+$sql = "SELECT firstName, lastName, userImage, bio, hostRating,address, title, description,locationimage
         FROM Users, Locations
         WHERE userID = ? 
         AND locationID = " . $locationID;
@@ -441,7 +441,7 @@ $connection->close();
         <button class="see-more">See More Photos</button>
     </div>
     <div class="info">
-        <h2>Guest House</h2>
+        <h2><?= htmlspecialchars($user['title']) ?></h2>
         <p><?= htmlspecialchars($user['address']) ?></p>
         <p class="description">
         <p><?= htmlspecialchars($user['description']) ?></p>

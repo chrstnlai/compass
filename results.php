@@ -25,7 +25,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 // Query to fetch listings based on the destination and optional date range
 $stmt = $connection->prepare("
-    SELECT locationID, locationimage, country, city, address, latitude, longitude
+    SELECT locationID, locationimage, country, city, address,title, latitude, longitude
     FROM Locations
     WHERE country LIKE ?
        OR city LIKE ?
@@ -194,7 +194,7 @@ $jsonMapLocations = json_encode($mapLocations);
                                     
                                       <a href="details.php?user_ID=' . urlencode($userInfoRow["userID"]) . '&location_ID='. urlencode($userRow["locationID"]) .'" style="text-decoration: none;"> 
         <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
-      
+       <p class="host-location">' . htmlspecialchars($title) . '</p>
                                         <p class="host-location">' . htmlspecialchars($address) . '</p>
                                         <div class="host-rating">
                                             <span class="star-icon">★</span>
