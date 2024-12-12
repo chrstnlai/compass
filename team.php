@@ -146,8 +146,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        color:transparent;
-        -webkit-text-stroke: 3px white;
+        color:white;
         position: relative;
         font-family: "Krona One";
         padding-top: 110px;
@@ -224,7 +223,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         align-items: center;
         background-color: white;
         color: #3b1b06;
-        padding: 0px 93.26px 0px 93.26px;
     }
 
     .navbar .logo {
@@ -245,7 +243,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     h1 {
         font-size:25px;
         padding: 0px 93.26px;
-        margin-top: 44px;
+        margin-top: 30px;
     }
 
     .navbar h2 {
@@ -371,7 +369,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
     body {
         background-color: #f5f5f5;
-        padding: 20px;
     }
 
     .container {

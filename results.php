@@ -7,6 +7,7 @@ $databaseName = "anikets_compass";
 
 // Create a new MySQLi instance and establish a connection
 $connection = new mysqli($serverName, $username, $password, $databaseName);
+$connection->set_charset("utf8");
 
 // Check for a connection error
 if ($connection->connect_errno) {
@@ -14,23 +15,67 @@ if ($connection->connect_errno) {
     exit();
 }
 
+header('Content-Type: text/html; charset=utf-8');
+
+
 // Get search parameters from request, with fallback to empty strings if not provided
-// HIIIIIIIII
 $searchDestination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '';
 $searchCheckinDate = isset($_REQUEST['checkin']) ? $_REQUEST['checkin'] : '';
 $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
+// Query to fetch listings based on the destination and optional date range
+$stmt = $connection->prepare("
+    SELECT locationID, locationimage, country, city, address,title, latitude, longitude
+    FROM Locations
+    WHERE country LIKE ?
+       OR city LIKE ?
+       OR address LIKE ?
+");
+
+$searchTerm = '%' . $searchDestination . '%';
+$stmt->bind_param('sss', $searchTerm, $searchTerm, $searchTerm);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if (!$result) {
+    die("Query failed: " . $connection->error);
+}
+
+// Initialize an array to store locations for the map
+$mapLocations = [];
+
+// Process each location record
+while ($location = $result->fetch_assoc()) {
+    $mapLocations[] = [
+        'id' => $location['locationID'],
+        'lat' => (float)$location['latitude'],
+        'lng' => (float)$location['longitude'],
+        'url' => 'details.php?id=' . urlencode($location['locationID'])
+    ];
+}
+
+// Convert the PHP array to JSON for use in JavaScript
+$jsonMapLocations = json_encode($mapLocations);
 ?>
 
 <html>
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB72JR3SZD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VB72JR3SZD');
+    </script>
+
+    <title>Search Results</title>
+    <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCTPy7I-WitRcAVAYZ7GZBBgSoNHx7Rs5I"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-          rel="stylesheet">
-
 </head>
 <body>
 <?php include 'nav.php'; ?>
@@ -40,40 +85,58 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     </div>
     <div class="search">
         <form action="results.php">
-            <input type="text" name="destination" placeholder="Where?">
-            <input type="date" name="checkin" placeholder="Check In:">
-            <input type="date" name="checkout" placeholder="Check Out:">
+            <input type="text"  placeholder="Where?" class="search-input" name="destination">
+            <input type="text"  placeholder="Check In:" class="search-input" name="checkin">
+            <input type="text"  placeholder="Check Out:" class="search-input" name="checkout">
             <button type="submit">
-                <img src="images/Group%2024.png" alt="Search">
+                <img src="images/Search.png" alt="Search" class="search-icon">
             </button>
         </form>
     </div>
-    <div class=centered>
-        <h2>
-            <?php
-            if ($searchDestination && $searchCheckinDate && $searchCheckoutDate) {
-                echo "You are seeing results for " . htmlspecialchars($searchDestination) . " from " . htmlspecialchars($searchCheckinDate) . " to " . htmlspecialchars($searchCheckoutDate);
-            } else if ($searchDestination) {
-                echo "You are seeing results for " . htmlspecialchars($searchDestination);
-            } else {
-                echo "No search criteria provided.";
-            }
-            ?>
-        </h2>
-    </div>
 </nav>
 <main>
+    <!-- Map Data Visualization Container -->
+    <div id = "map"></div>
+
+    <script>
+        // Pass PHP data to JavaScript
+        const mapLocations = <?php echo $jsonMapLocations; ?>;
+
+        function initMap() {
+            // Initialize the map centered on the US
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: { lat: 39.8283, lng: -98.5795 } // Center of the US
+            });
+
+            // Add markers for each location
+            mapLocations.forEach(location => {
+                const marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map,
+                    title: `Location ID: ${location.id}`
+                });
+
+                // Add click event to redirect when marker is clicked
+                marker.addListener('click', () => {
+                    window.location.href = location.url;
+                });
+            });
+        }
+
+        // Initialize the map on page load
+        window.onload = initMap;
+    </script>
+
+    <!-- Search Results Container -->
     <div class=resultnumber>
         <div class="container">
             <?php
             // Query to fetch listings based on the destination and optional date range
-            $query = "SELECT * FROM Locations WHERE country LIKE '%$searchDestination%' 
-            OR city LIKE '%$searchDestination%' 
-            OR address LIKE '%$searchDestination%'";
-
-            //            if ($searchCheckinDate && $searchCheckoutDate) {
-            //                $query .= " AND checkin >= '$searchCheckinDate' AND checkout <= '$searchCheckoutDate'";
-            //            }
+            $query = "SELECT locationID, locationimage, address, latitude, longitude FROM Locations 
+                      WHERE country LIKE '%$searchDestination%' 
+                      OR city LIKE '%$searchDestination%' 
+                      OR address LIKE '%$searchDestination%'";
 
             // Execute the main query
             $result = $connection->query($query);
@@ -82,12 +145,36 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                 die("Query failed: " . $connection->error);
             }
 
+            if(empty($_REQUEST["start"]))
+            {$start=1; }
+            else
+            { $start = $_REQUEST["start"]; }
+
+            $end = $start + 9;
+
+            if ($result->num_rows < $end)
+            { $end = $result->num_rows +1; }
+
+            $counter = $start;
+
+            $result->data_seek($start-1);
+
+            //            echo "<a href='results.php?start=" . ($start-10) .
+            //                "'>Previous Records</a> | " .
+            //                "<a href='results.php?start=" . ($start+10)  .
+            //                "'>Next Records</a><br><br>";
+            echo "<a href='results.php?start=" . ($start-10) . "&destination=" . $searchDestination. "&checkin=" . $searchCheckinDate . "&checkout=" . $searchCheckoutDate . "'>Previous Records</a> | " .
+                "<a href='results.php?start=" . ($start+10)  . "&destination=" . $searchDestination. "&checkin=" . $searchCheckinDate . "&checkout=" . $searchCheckoutDate . "'>Next Records</a><br><br>";
             // Process each location record
             while ($location = $result->fetch_assoc()) {
+                if($counter==$end)
+                { break; }
+                $counter++;
                 $locationID = $location['locationID'];
+                $address = $location['address']; // Get the address
 
                 // Query to find the user associated with the location
-                $userLocationQuery = "SELECT userID FROM UsersxLocations WHERE locationID = '$locationID' LIMIT 1";
+                $userLocationQuery = "SELECT * FROM UsersxLocations WHERE locationID = '$locationID' LIMIT 1";
                 $userLocationResult = $connection->query($userLocationQuery);
 
                 if ($userLocationResult && $userRow = $userLocationResult->fetch_assoc()) {
@@ -98,26 +185,33 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
                     $userInfoResult = $connection->query($userInfoQuery);
 
                     if ($userInfoRow = $userInfoResult->fetch_assoc()) {
-                        echo '<div class="listing-card">
+                        echo '
+       
+                            <div class="listing-card">
                             <div class="listing-header">
                                 <div class="profile-section">
-                                <div class="host-info">
-                                    <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
-                                    <p class="host-location">Hollywood, Los Angeles, CA, 90046</p>
-                                    <div class="host-rating">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
-                                    </div>
-                                    <div class="profile-image-container">
-                                      <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image" style="width:100px; height:auto;">
-                                        <div class="verified-badge">✓</div>
+                                    <div class="host-info">
+                                    
+                                      <a href="details.php?user_ID=' . urlencode($userInfoRow["userID"]) . '&location_ID='. urlencode($userRow["locationID"]) .'" style="text-decoration: none;"> 
+        <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
+      
+                                        <p class="host-location">' . htmlspecialchars($address) . '</p>
+                                        <div class="host-rating">
+                                            <span class="star-icon">★</span>
+                                            <span class="rating-text">' . htmlspecialchars($userInfoRow['hostRating']) . ' (124)</span>
+                                        </div>
+                                        <div class="profile-image-container">
+                                          <img src="' . htmlspecialchars($userInfoRow["userimage"]) . '" alt="Profile Image";">
+                                          <div class="verified-badge">✓</div>
+                                        </div>
                                     </div>
                                 </div>
+                                <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
                             </div>
-                            <p class="host-description">' . htmlspecialchars($userInfoRow['bio']) . '</p>
+                            <img src="' . htmlspecialchars($location["locationimage"]) . '" alt="Property image" class="property-image">
+                      
                         </div>
-                        <img src="/api/placeholder/800/400" alt="Property image" class="property-image">
-                    </div>';
+                          </a>';
                     }
                 }
             }
@@ -128,7 +222,16 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 </body>
 </html>
 
+
 <style>
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
     body {
         font-family: lato;
         margin: 0;
@@ -151,7 +254,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         align-items: center;
         background-color: white;
         color: #3b1b06;
-        padding: 25px 93.26px 45.63px 93.26px;
     }
 
     .navbar .logo {
@@ -198,6 +300,11 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
     main {
         align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0;
+        flex-grow:1;
+
     }
 
     .search {
@@ -207,13 +314,42 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     }
 
     .search img {
-        width: 35px;
-        height: 35px;
         flex-shrink: 0;
         position: relative;
-        top: 12px;
-        padding-left: 10px;
+        top: 11px;
+        margin-left: 10px;
     }
+
+    .search-input {
+        width: 150px;
+        height: 30px;
+        padding: 10px;
+        border: 2px solid white;
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+        font-size: 13px;
+        outline: none;
+        margin-bottom: 75px;
+    }
+
+    .search-input::placeholder {
+        color: white;
+    }
+
+    .search button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+
+    .search-icon {
+        width: 30px;
+        height: 30px;
+    }
+
 
     .explore h1 {
         margin-top: 44px;
@@ -345,6 +481,10 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     .resultnumber {
         text-align: center;
         padding: 20px;
+        width: 100%;
+        margin-left: auto; /* Push the element to the right */
+        margin-right: 0;   /* Ensure no gap on the right */
+        float: right;
     }
 
     * {
@@ -355,8 +495,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     }
 
     body {
-        background-color: #f5f5f5;
-        padding: 20px;
+        background-color: #ffffff;
     }
 
     .container {
@@ -371,32 +510,49 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         margin-bottom: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         display: flex;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .listing-card:hover {
+        background-color: #9cccff; /* Blue background */
+        color: white; /* White text */
     }
 
     .listing-header {
         background-color: #f0f7ff;
         padding: 20px;
         flex: 1;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    .listing-card:hover .listing-header {
+        background-color: #9cccff; /* Blue background */
+        color: white; /* White text */
+    }
+
 
     .profile-section {
         display: flex;
         align-items: flex-start;
-        gap: 16px;
+        gap: 24px;
     }
 
     .profile-image-container {
         position: relative;
-        width: 64px;
-        height: 64px;
+        width: 120px; /* Fixed width */
+        height: 90px; /* Fixed height for rectangle shape */
+        overflow: hidden;
+        border-radius: 0; /* No border radius for rectangles */
+        background-color: #f0f0f0; /* Placeholder background color */
     }
 
-    .profile-image {
+    .profile-image-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
+        object-position: center;
 
+    }
     .verified-badge {
         position: absolute;
         bottom: -4px;
@@ -456,11 +612,35 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
     .property-image {
         width: 400px;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
     }
 
+    #map {
+        height: 400px; /* Set a fixed height */
+        width: 500px;
+        flex-grow: 1;
+        margin: 20 120px;
+        border-radius: 8px;
+        position: relative;
+        top: 15px;
+    }
+
     @media (max-width: 800px) {
+        #map {
+            position: relative;
+            top: 50px;
+            margin:20px;
+        }
+        .resultnumber {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-left: auto; /* Push the element to the right */
+            margin-right: 0;   /* Ensure no gap on the right */
+            float: right;
+        }
+
         .listing-card {
             flex-direction: column;
         }
@@ -472,6 +652,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
         .container {
             padding: 10px;
+            width: 100%;
         }
 
         .listing-header {
@@ -482,5 +663,13 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
             width:20px;
             height:20px;
         }
+
+        .listing-card:hover .host-name,
+        .listing-card:hover .host-location,
+        .listing-card:hover .host-description {
+            color: white; /* Change text to white */
+        }
+
     }
+
 </style>

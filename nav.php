@@ -23,8 +23,8 @@
                 </div>
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="signup.php">Sign up</a></li>
-                        <li><a href="signin.php">Log in</a></li>
+                        <li><a href="signup.php">Sign Up</a></li>
+                        <li><a href="signin.php">Sign In</a></li>
                         <li><a href="referral.php">Referral</a></li>
                         <li><a href="team.php">Meet the Team</a></li>
                     </ul>

@@ -23,6 +23,15 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 <html>
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB72JR3SZD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VB72JR3SZD');
+    </script>
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -30,10 +39,11 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
 
 </head>
 <body>
-<?php include 'nav.php'; ?>
+
 <nav>
-    <div class=" title">
-        About Us
+    <?php include 'nav.php'; ?>
+    <div class="title">
+        <p>About Us</p>
         <div class="subtitle">
             Learn more about our commitment to your best travel experience.
         </div>
@@ -48,7 +58,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Us - Compass</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -156,6 +165,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     body {
         font-family: lato;
         margin: 0;
+        background-color: #f5f5f5;
     }
 
     .title {
@@ -163,17 +173,26 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        color:transparent;
-        -webkit-text-stroke: 3px white;
+        color:white;
+        position: relative;
+        font-family: "Krona One";
+    }
+
+    .title p {
+        font-size: 72.702px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color:white;
         position: relative;
         font-family: "Krona One";
         padding-top: 110px;
+        padding-bottom: 30px;
     }
-    .subtitle {
 
-        color:transparent;
+    .subtitle {
         font-size: 24pt;
-        -webkit-text-stroke: 1px white;
+        padding-bottom: 70px;
     }
 
     ul {
@@ -244,7 +263,6 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         align-items: center;
         background-color: white;
         color: #3b1b06;
-        padding: 0px 93.26px 0px 93.26px;
     }
 
     .navbar .logo {
@@ -262,6 +280,16 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         text-align: center;
     }
 
+    .dropdown-menu {
+        top: 100%; /* Place dropdown below the menu */
+    }
+
+    .menu-toggle {
+        display: block;
+        align-items: center;
+        gap: 10px;
+    }
+
     h1 {
         font-size:25px;
         padding: 0px 93.26px;
@@ -276,17 +304,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-weight: 900;
         line-height: normal;
     }
-    .title {
-        font-size: 72.702px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        color:transparent;
-        -webkit-text-stroke: 3px white;
-        position: relative;
-        font-family: "Krona One";
-        padding-top: 110px;
-    }
+
 
     main {
         align-items: center;
@@ -391,10 +409,7 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    body {
-        background-color: #f5f5f5;
-        padding: 20px;
-    }
+
 
     .container {
         max-width: 1200px;
@@ -402,6 +417,10 @@ $searchCheckoutDate = isset($_REQUEST['checkout']) ? $_REQUEST['checkout'] : '';
     }
 
     @media (max-width: 800px) {
+
+        .title {
+            padding: 20px;
+        }
         .listing-card {
             flex-direction: column;
         }

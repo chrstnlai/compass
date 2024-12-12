@@ -15,11 +15,21 @@ if($mysql->connect_errno) {
     echo "db connection error : " . $mysql->connect_error;
     exit();
 }
-
 ?>
 
 <html>
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB72JR3SZD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VB72JR3SZD');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -31,14 +41,14 @@ if($mysql->connect_errno) {
 <nav>
     <?php include 'nav.php'; ?>
     <div class=" title">
-        <h1>Where are you traveling?</h1>
+ <h1>Where are you traveling?</h1>
         <h2> For solo travelers that want a personal experience. </h2>
     </div>
     <div class="search">
         <form action="results.php">
-            <input type="text"  placeholder="Where?" class="search-input">
-            <input type="text"  placeholder="Check In:" class="search-input">
-            <input type="text"  placeholder="Check Out:" class="search-input">
+            <input type="text"  placeholder="Where?" class="search-input" name="destination">
+            <input type="text"  placeholder="Check In:" class="search-input" name="checkin">
+            <input type="text"  placeholder="Check Out:" class="search-input" name="checkout">
             <button type="submit">
                 <img src="images/Search.png" alt="Search" class="search-icon">
             </button>
@@ -51,30 +61,42 @@ if($mysql->connect_errno) {
         <div class="explore">
             <h1>Explore Regions</h1>
             <div class="grid">
+                <a href="asia.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/asia.jpg" alt="Asia">
                     <div class="overlay">Asia</div>
                 </div>
+                </a>
+                <a href="europe.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/europe.jpg" alt="Europe">
                     <div class="overlay">Europe</div>
                 </div>
+                </a>
+                <a href="southafrica.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/southafricajpg.jpg" alt="South Africa">
                     <div class="overlay">South Africa</div>
                 </div>
+                </a>
+                <a href="australia.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/australia.jpg" alt="Australia">
                     <div class="overlay">Australia</div>
                 </div>
+                </a>
+                <a href="northamerica.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/northamerica.png" alt="North America">
                     <div class="overlay">North America</div>
                 </div>
+                </a>
+                <a href="southamerica.php" class="card-link">
                 <div class="card">
                     <img src="images/regions/southamerica.jpg" alt="South America">
                     <div class="overlay">South America</div>
                 </div>
+                </a>
             </div>
         </div>
     </section>
@@ -283,12 +305,14 @@ if($mysql->connect_errno) {
         flex-shrink: 0;
         position: relative;
         padding-left: 10px;
+        top: 11px;
     }
 
     .search-icon {
         width: 30px;
         height: 30px;
     }
+
 
     .explore h1 {
         margin-top: 44px;
