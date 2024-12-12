@@ -16,26 +16,36 @@ if ($connection->connect_errno) {
 }
 
 // Check if 'id' is provided in the URL and is valid
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+if (!isset($_GET['user_ID']) || !is_numeric($_GET['user_ID'])) {
+    echo "Invalid or missing ID.";
+    exit();
+}
+
+if (!isset($_GET['location_ID']) || !is_numeric($_GET['location_ID'])) {
     echo "Invalid or missing ID.";
     exit();
 }
 
 // Get the user ID from the URL
-$userID = intval($_GET['id']);
+$userID = intval($_GET['user_ID']);
+$locationID = intval($_GET['location_ID']);
 
 // Query to fetch user details based on the user ID
-$sql = "SELECT firstName, lastName, userImage, bio, hostRating 
-        FROM Users 
-        WHERE userID = ?";
+$sql = "SELECT firstName, lastName, userImage, bio, hostRating,address, description,locationimage
+        FROM Users, Locations
+        WHERE userID = ? 
+        AND locationID = " . $locationID;
 $stmt = $connection->prepare($sql);
 $stmt->bind_param('i', $userID);
 $stmt->execute();
 $result = $stmt->get_result();
 
+
 if ($result->num_rows === 0) {
     echo "No user found with the given ID.";
     exit();
+
+
 }
 
 // Fetch user data
@@ -44,6 +54,8 @@ $user = $result->fetch_assoc();
 // Close the statement and connection
 $stmt->close();
 $connection->close();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -414,17 +426,20 @@ $connection->close();
 </head>
 <body>
 <?php include 'nav.php'; ?>
+
 <div class="card">
 
+
+
     <div class="image-container">
-        <img src="placeholder.png" alt="Guest House Living Room">
+        <img src="<?= htmlspecialchars($user['locationimage']) ?>" alt="User Image">
         <button class="see-more">See More Photos</button>
     </div>
     <div class="info">
         <h2>Guest House</h2>
-        <p class="location">in Hollywood, Los Angeles, CA, 90046</p>
+        <p><?= htmlspecialchars($user['address']) ?></p>
         <p class="description">
-            Experience panoramic mountain views and breathtaking sunsets from our charming tiny house on a scenic ranch. Perfect for romantic getaways or family retreats. Explore miles of nearby hiking and biking trails, and enjoy visits from friendly ranch animals on the private fenced-in property.
+        <p><?= htmlspecialchars($user['description']) ?></p>
         </p>
         <button class="reserve-btn">Reserve</button>
     </div>
@@ -442,6 +457,7 @@ $connection->close();
                        <p class="rating">Rating: <?= htmlspecialchars($user['hostRating']) ?> ★</p>
                 <blockquote>
                     <p><?= htmlspecialchars($user['bio']) ?></p>
+
                 </blockquote>
             </div>
         </div>

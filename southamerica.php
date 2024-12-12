@@ -70,7 +70,7 @@
     </div>
     <div class="destination">
         <h2>Machu Picchu: The Lost City of the Incas</h2>
-        <img src="images/southamerica/machu-picchu.jpg" alt="Machu Picchu">
+        <img src="images/southamerica/machu-picchu .jpg" alt="Machu Picchu">
         <p>Explore Machu Picchu, a UNESCO World Heritage Site and one of the New Seven Wonders of the World. Nestled high in the Andes Mountains of Peru, this ancient Incan city offers breathtaking views, rich history, and a connection to a bygone civilization. A must-see for any adventurer.</p>
     </div>
     <div class="destination">

@@ -65,7 +65,7 @@
 <main>
     <div class="destination">
         <h2>Sydney: Iconic Coastal Metropolis</h2>
-        <img src="images/australia/sydney.jpg" alt="Sydney Opera House and Harbour Bridge">
+        <img src="images/australia/sydney.jpeg" alt="Sydney Opera House and Harbour Bridge">
         <p>Experience the vibrant heart of Australia in Sydney, a city where urban sophistication meets natural beauty. Marvel at the world-famous Opera House, explore the historic Rocks district, and enjoy the stunning beaches that make Sydney a global destination. From Bondi to Darling Harbour, the city offers an unforgettable blend of culture, cuisine, and coastal charm.</p>
     </div>
     <div class="destination">

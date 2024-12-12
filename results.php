@@ -145,13 +145,36 @@ $jsonMapLocations = json_encode($mapLocations);
                 die("Query failed: " . $connection->error);
             }
 
+            if(empty($_REQUEST["start"]))
+            {$start=1; }
+            else
+            { $start = $_REQUEST["start"]; }
+
+            $end = $start + 9;
+
+            if ($result->num_rows < $end)
+            { $end = $result->num_rows +1; }
+
+            $counter = $start;
+
+            $result->data_seek($start-1);
+
+//            echo "<a href='results.php?start=" . ($start-10) .
+//                "'>Previous Records</a> | " .
+//                "<a href='results.php?start=" . ($start+10)  .
+//                "'>Next Records</a><br><br>";
+            echo "<a href='results.php?start=" . ($start-10) . "&destination=" . $searchDestination. "&checkin=" . $searchCheckinDate . "&checkout=" . $searchCheckoutDate . "'>Previous Records</a> | " .
+                "<a href='results.php?start=" . ($start+10)  . "&destination=" . $searchDestination. "&checkin=" . $searchCheckinDate . "&checkout=" . $searchCheckoutDate . "'>Next Records</a><br><br>";
             // Process each location record
             while ($location = $result->fetch_assoc()) {
+                    if($counter==$end)
+                    { break; }
+                    $counter++;
                 $locationID = $location['locationID'];
                 $address = $location['address']; // Get the address
 
                 // Query to find the user associated with the location
-                $userLocationQuery = "SELECT userID FROM UsersxLocations WHERE locationID = '$locationID' LIMIT 1";
+                $userLocationQuery = "SELECT * FROM UsersxLocations WHERE locationID = '$locationID' LIMIT 1";
                 $userLocationResult = $connection->query($userLocationQuery);
 
                 if ($userLocationResult && $userRow = $userLocationResult->fetch_assoc()) {
@@ -169,7 +192,7 @@ $jsonMapLocations = json_encode($mapLocations);
                                 <div class="profile-section">
                                     <div class="host-info">
                                     
-                                      <a href="details.php?id=' . urlencode($userInfoRow["userID"]) . '" style="text-decoration: none;"> 
+                                      <a href="details.php?user_ID=' . urlencode($userInfoRow["userID"]) . '&location_ID='. urlencode($userRow["locationID"]) .'" style="text-decoration: none;"> 
         <h2 class="host-name">' . htmlspecialchars($userInfoRow['firstName'] . ' ' . $userInfoRow['lastName']) . '</h2>
       
                                         <p class="host-location">' . htmlspecialchars($address) . '</p>
