@@ -258,11 +258,16 @@ $connection->close();
         }
 
         .avatar {
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             background-color: #ddd;
             border-radius: 50%;
             flex-shrink: 0;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
         }
 
         .details h2 {
