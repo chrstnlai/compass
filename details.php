@@ -31,7 +31,7 @@ $userID = intval($_GET['user_ID']);
 $locationID = intval($_GET['location_ID']);
 
 // Query to fetch user details based on the user ID
-$sql = "SELECT firstName, lastName, userImage, bio, hostRating,address, title, description,locationimage
+$sql = "SELECT firstName, lastName, userImage, bio, hostRating,address, title, itinerary,  description,locationimage
         FROM Users, Locations
         WHERE userID = ? 
         AND locationID = " . $locationID;
@@ -466,37 +466,13 @@ $connection->close();
                 </blockquote>
             </div>
         </div>
-        <div class="suggested-locations">
-            <h3>Host Suggested Locations:</h3>
-            <ol>
-                <li>The Getty Villa</li>
-                <li>Los Angeles Crest Viewpoint</li>
-                <li>The Laugh Factory</li>
-            </ol>
-        </div>
     </div>
-    <div class="calendar">
-        <div class="month-header">
-            <span class="prev">&lt;</span>
-            <h3 class="month-year"></h3>
-            <span class="next">&gt;</span>
-        </div>
-        <table>
-            <thead>
-            <tr>
-                <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
-            </tr>
-            </thead>
-            <tbody class="calendar-body">
-            <!-- Days will be dynamically generated -->
-            </tbody>
-        </table>
-    </div>
+
 
 </div>
 <div class="itinerary">
     <h3>Itinerary:</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+    <p><?= htmlspecialchars($user['itinerary']) ?></p>
 </div>
 <div class="reviews">
     <h1>Reviews</h1>
