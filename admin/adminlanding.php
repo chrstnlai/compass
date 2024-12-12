@@ -83,6 +83,10 @@ if($mysql->connect_errno) {
         </div>
     </div>
 </main>
+<footer>
+    <p>&copy; 2024 Compass. All rights reserved.</p>
+    <a href="admin/adminlanding.php"> Admin Page</a>
+</footer>
 </body>
 </html>
 
@@ -198,6 +202,11 @@ if($mysql->connect_errno) {
 
     .login-icon {
         width: 75px;
+    }
+    footer {
+        padding-top: 50px;
+        padding-left: 100px;
+        margin-bottom: 30px;
     }
 
 </style>
